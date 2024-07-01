@@ -1,0 +1,182 @@
+/*********************************
+/*  Footer Start
+*********************************/
+.footer__section {
+    padding-top: 50px;
+    background: linear-gradient(0deg, rgba(255, 157, 120, 0.02), rgba(255, 157, 120, 0.02)), linear-gradient(0deg, #ffffff, #ffffff);
+}
+
+.footer__widget {
+    padding-bottom: 64px;
+    max-width: 320px;
+
+    @include respond(tabport) {
+        display: none;
+        max-width: 100%;
+    }
+
+    @include respond(phone-sm) {
+        padding-bottom: 30px;
+    }
+    .footer__logo {
+        margin-bottom: 32px;
+        img {
+            width: auto;
+            height: auto;
+            display: block;
+        }
+    }
+    p {
+        color: $content2;
+        margin-bottom: 0;
+    }
+    .title {
+        margin-bottom: 16px;
+
+        h5 {
+            font-family: $default;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: $semibold;
+            color: $content3;
+            margin-bottom: 0;
+        }
+    }
+
+    ul {
+        list-style: none;
+        li {
+            @include flexbox($a: center, $jc: inherit);
+            font-family: $default;
+            font-size: 16px;
+            font-weight: $medium;
+            line-height: 24px;
+            color: $content2;
+            margin-bottom: 12px;
+            a {
+                color: $content2;
+                @include flexbox($a: center, $jc: inherit);
+                transition: $transition;
+                position: relative;
+                i {
+                    font-size: 14px;
+                    margin-right: 3px;
+                }
+                &::after {
+                    content: "\f101";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    font-family: "Font Awesome 6 Free";
+                    font-weight: 900;
+                    color: $primary;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: $transition;
+                }
+                &:hover {
+                    color: $primary;
+                    padding-left: 18px;
+
+                    &::after {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+                span {
+                    font-family: $default;
+                    font-size: 12px;
+                    font-weight: $medium;
+                    line-height: 18px;
+                    color: #027a48;
+                    background: #ecfdf3;
+                    border-radius: 30px;
+                    padding: 2px 8px;
+                    margin-left: 16px;
+                }
+                .danger {
+                    background: rgba($red, 0.2);
+                    color: $red;
+                }
+            }
+        }
+    }
+}
+.footer__social {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    a {
+        font-size: 16px;
+        color: $content2;
+        background: $white;
+        height: 40px;
+        width: 40px;
+        border-radius: 8px;
+        box-shadow: 0px 5px 5px rgba(144, 144, 144, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        transition: $transition;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+        &:hover {
+            background: $primary;
+            color: $white;
+        }
+    }
+}
+
+.footer__bottom {
+    .footer__content {
+        border-top: 1px solid $border;
+        padding: 32px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include respond(phone-sm) {
+            // display: block;
+            flex-direction: column-reverse;
+        }
+    }
+    .content p {
+        font-family: $default;
+        font-size: 16px;
+        line-height: 24px;
+        color: $content3;
+        margin-bottom: 0;
+
+        a {
+            color: $primary;
+        }
+    }
+    .link {
+        a {
+            font-family: $default;
+            font-size: 16px;
+            font-weight: $regular;
+            line-height: 26px;
+            color: $content3;
+            display: inline-block;
+            position: relative;
+            margin-left: 16px;
+            transition: $transition;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+        @include respond(phone-sm) {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+/*********************************
+/*  Footer End
+*********************************/

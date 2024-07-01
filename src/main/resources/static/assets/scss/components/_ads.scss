@@ -1,0 +1,152 @@
+/*********************************
+/*  Banner Ads Start
+*********************************/
+.banner__ads__main {
+    @include flexbox($a: baseline, $jc: space-between);
+}
+.banner__ads__wrapper {
+    background: #fce3eb;
+    border-radius: 16px;
+    padding: 46px 36px;
+    position: relative;
+    overflow: hidden;
+    flex-basis: calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+
+    @include respond(tabland) {
+        padding: 45px 15px;
+    }
+    @include respond(tabport) {
+        flex-basis: calc(50% - 15px);
+        max-width: calc(50% - 15px);
+        margin-bottom: 30px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+    @include respond(phone) {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    &:nth-of-type(2) {
+        background: linear-gradient(180deg, #c9d5d5 0%, #f3f9f7 100%), linear-gradient(0deg, #ffffff, #ffffff);
+
+        &::after {
+            background: rgba(0, 175, 51, 0.1);
+            bottom: -100px;
+            right: -60px;
+            width: 255px;
+            height: 255px;
+            top: auto;
+        }
+    }
+    &:nth-of-type(3) {
+        background: linear-gradient(0deg, rgba(206, 4, 30, 0.2), rgba(206, 4, 30, 0.2)), linear-gradient(0deg, #ffffff, #ffffff);
+
+        &::after {
+            background: #ffb2b2;
+            bottom: -70px;
+            right: -45px;
+            width: 261px;
+            height: 261px;
+            top: auto;
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -31px;
+        right: -70px;
+        height: 179px;
+        width: 179px;
+        background: #fbd4e1;
+        border-radius: 50%;
+    }
+
+    .banner__ads__single__item {
+        position: relative;
+        z-index: 9;
+        .banner__ads {
+            &__subtitle {
+                font-family: $default;
+                font-size: 16px;
+                font-style: italic;
+                font-weight: $regular;
+                line-height: 24px;
+                color: $primary;
+                display: block;
+                margin-bottom: 9px;
+            }
+            &__title {
+                //styleName: Text xl/Semibold;
+                font-family: $default;
+                font-size: 20px;
+                font-weight: $semibold;
+                line-height: 30px;
+                color: $heading;
+                display: block;
+                margin-bottom: 0;
+            }
+        }
+        .shop__btn {
+            margin-top: 17px;
+            .btn {
+                font-size: 14px;
+                font-weight: $medium;
+                line-height: 20px;
+                padding: 8px 16px;
+            }
+        }
+    }
+    .banner__ads__image {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 1;
+        max-width: 210px;
+
+        img {
+            transition: $transition;
+        }
+    }
+    &:hover {
+        .banner__ads__image {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+    &__v2 {
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+}
+
+/*********************************
+/*  Banner Ads End
+*********************************/
+
+/*********************************
+/*  Hero Banner Ads Start
+*********************************/
+
+.hero__banner__ads {
+    .banner__ads__wrapper {
+        margin-bottom: 30px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        @include respond(tabland) {
+            margin: 30px 0px 0px;
+        }
+    }
+}
+/*********************************
+/*  Hero Banner Ads End
+*********************************/

@@ -1,0 +1,69 @@
+/* ============================ */
+/* Section Header Start */
+/* ============================ */
+.section-header {
+    text-align: center;
+    width: 100%;
+    @include respond(tabport) {
+        margin-bottom: 32px;
+    }
+
+    &__title {
+        width: 100%;
+        max-width: 475px;
+        font-family: $default;
+        font-size: 36px;
+        font-weight: $bold;
+        line-height: 44px;
+        letter-spacing: -0.02em;
+        text-transform: capitalize;
+        & + .section-header__desc {
+            margin-top: 24px;
+        }
+    }
+    &__desc {
+        width: 100%;
+        font-family: $default;
+        font-size: 16px;
+        font-weight: $regular;
+        line-height: 24px;
+        letter-spacing: 0em;
+        color: #637381;
+
+    }
+    &--lg {
+        max-width: 816px;
+    }
+    &--md {
+        max-width: 650px;
+    }
+    &--sm {
+        max-width: 466px;
+    }
+    &--left {
+        text-align: left;
+        margin-left: 0;
+        margin-right: auto;
+    }
+    &--right {
+        text-align: right;
+        margin-left: auto;
+        margin-right: 0;
+        .section-header {
+            &__title, &__desc {
+                margin-left: auto;
+            }
+        }
+    }
+    &--center {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        .section-header {
+            &__title, &__desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,103 @@
+/*********************************
+/*  CtaBox Start
+*********************************/
+.call__to__action {
+    background: url("../images/ctabox/cta-bg.jpg");
+    @include bg-props;
+}
+.cta__box__wrapper {
+    background: rgba($white, 0.33);
+    border-radius: 16px;
+    padding: 60px 160px;
+
+    @include respond(tabland) {
+        padding: 60px 30px;
+    }
+    @include respond(phone-xm) {
+        padding: 30px 15px;
+    }
+    .cta {
+        &__title {
+            color: $heading2;
+            display: block;
+            margin-bottom: 24px;
+
+            @include respond(phone-xm) {
+                font-size: 25px;
+            }
+        }
+        &__content {
+            font-size: 18px;
+            line-height: 28px;
+            color: $content3;
+            margin-bottom: 0;
+            max-width: 670px;
+            margin: auto;
+
+            @include respond(tabport) {
+                font-size: 16px;
+            }
+            @include respond(phone-xm) {
+                font-size: 14px;
+            }
+        }
+    }
+}
+.cta__form {
+    @include flexbox($a: center, $jc: center);
+    flex-wrap: nowrap;
+    margin-top: 40px;
+
+    @include respond(phone-xm) {
+        display: block;
+    }
+    label {
+        font-family: $default;
+        font-size: 14px;
+        font-weight: $medium;
+        line-height: 20px;
+        color: $heading2;
+        display: block;
+        text-align: left;
+        margin-bottom: 6px;
+        text-transform: capitalize;
+    }
+    .form-control {
+        font-family: $default;
+        font-size: 16px;
+        font-weight: $regular;
+        line-height: 24px;
+        background: $white;
+        color: $content2;
+        display: block;
+        padding: 12px 21px;
+        max-width: 344px;
+        border-radius: $radius;
+        border: 1px solid $white;
+        flex: 1;
+
+        &:focus {
+            box-shadow: none;
+            border-color: $primary;
+        }
+        &::placeholder {
+            text-transform: capitalize;
+        }
+    }
+    .btn {
+        padding: 13px 40px;
+        margin-left: 12px;
+
+        @include respond(phone) {
+            padding: 13px 20px;
+        }
+        @include respond(phone-xm) {
+            width: 100%;
+            margin: 10px 0px 0px;
+        }
+    }
+}
+
+/*********************************
+/*  CtaBox End
+*********************************/

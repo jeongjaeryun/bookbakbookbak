@@ -1,0 +1,763 @@
+/*********************************
+/* Contact Form Start 
+**********************************/
+.sec__title {
+    font-family: $default;
+    font-size: 30px;
+    font-weight: $bold;
+    line-height: 38px;
+    margin-bottom: 30px;
+    color: $heading;
+    margin-top: 30px;
+}
+
+.form__wrapper {
+    .flex__form {
+        @include flexbox($a: center, $jc: space-between);
+        width: 100%;
+
+        .form-group {
+            flex-basis: calc(33.33% - 13px);
+
+            @include respond(phone) {
+                flex-basis: 100%;
+            }
+        }
+
+        &.col_2 {
+            .form-group {
+                flex-basis: calc(50% - 10px);
+
+                @include respond(phone-sm) {
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        &.col_3 {
+            .form-group {
+                flex-basis: calc(33.33% - 13px);
+
+                @include respond(phone-sm) {
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        &.col_4 {
+            .form-group {
+                flex-basis: calc(25% - 13px);
+
+                @include respond(phone-sm) {
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        &.c-1 {
+            .form-group {
+                flex-basis: 100%;
+            }
+        }
+
+        &.c-2 {
+            .form-group {
+                flex-basis: calc(50% - 13px);
+
+                @include respond(phone-sm) {
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        &.c-3 {
+            .form-group {
+                flex-basis: calc(33.33% - 13px);
+
+                @include respond(phone) {
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        &.c-4 {
+            .form-group {
+                flex-basis: calc(25% - 13px);
+
+                @include respond(phone-sm) {
+                    flex-basis: 100%;
+                }
+            }
+        }
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .form-icon {
+        display: flex;
+        align-items: center;
+        border-radius: $radius !important;
+        border: 1px solid #d0d5dd;
+        padding: 10px 14px;
+        .form-control {
+            padding: 0;
+            border: none;
+        }
+        .icon {
+            height: 24px;
+            width: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+
+            img {
+                width: 20px;
+                height: auto;
+                display: block;
+            }
+        }
+        &:focus {
+            border-color: $primary;
+        }
+    }
+
+    label {
+        font-family: $default;
+        font-size: 14px;
+        font-weight: $medium;
+        line-height: 20px;
+        color: $heading2;
+        display: block;
+        text-align: left;
+        margin-bottom: 6px;
+        text-transform: capitalize;
+    }
+
+    .form-control {
+        font-family: $default;
+        font-size: 16px;
+        font-weight: $regular;
+        line-height: 24px !important;
+        background: transparent;
+        color: $content2;
+        display: block;
+        width: 100%;
+        position: relative;
+        padding: 10px 14px;
+        border-radius: $radius !important;
+        border: 1px solid #d0d5dd;
+        -webkit-appearance: none;
+
+        &:focus {
+            box-shadow: none;
+            border-color: $primary;
+            -webkit-appearance: none;
+        }
+
+        &::placeholder {
+            text-transform: capitalize;
+        }
+    }
+
+    .c-icon {
+        font-size: 14px;
+        color: $content3;
+        position: absolute;
+        bottom: 10px;
+        right: 14px;
+        pointer-events: none;
+    }
+
+    .input-info__save {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+
+        span {
+            font-family: $default;
+            font-size: 15px;
+            color: $heading;
+            font-weight: $medium;
+        }
+
+        a {
+            font-family: $default;
+            font-size: 15px;
+            color: $heading;
+            font-weight: $medium;
+            display: inline-block;
+            margin-left: 5px;
+            transition: $transition;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .checkbox {
+            position: absolute; // take it out of document flow
+            opacity: 0; // hide it
+
+            & + label {
+                position: relative;
+                cursor: pointer;
+                padding: 0;
+                margin-bottom: 0;
+                text-transform: capitalize;
+                font-family: $default;
+                font-size: 12px;
+                font-weight: $regular;
+                display: flex;
+                align-items: center;
+                line-height: 18px;
+                color: $heading;
+            }
+
+            // Box.
+            & + label:before {
+                content: "";
+                margin-right: 10px;
+                display: inline-block;
+                vertical-align: text-top;
+                width: 16px;
+                height: 16px;
+                border-radius: 4px;
+                border: 1px solid #d0d5dd;
+                background: transparent;
+                transition: $transition;
+            }
+
+            // Box checked
+            &:checked + label:before {
+                background: $primary;
+                border-color: $primary;
+            }
+
+            // Checkmark. Could be replaced with an image
+            &:checked + label:after {
+                content: "";
+                position: absolute;
+                left: 3px;
+                top: 9px;
+                background: white;
+                width: 2px;
+                height: 2px;
+                box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    .checkbox,
+    [type="checkbox"] {
+        position: absolute; // take it out of document flow
+        opacity: 0; // hide it
+
+        & + label {
+            position: relative;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 0;
+            font-family: $default;
+            font-size: 14px;
+            font-weight: $medium;
+            display: flex;
+            align-items: center;
+            line-height: 20px;
+            color: $heading;
+        }
+
+        // Box.
+        & + label:before {
+            content: "";
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: text-top;
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1px solid #d0d5dd;
+            background: transparent;
+            transition: $transition;
+        }
+
+        // Box checked
+        &:checked + label:before {
+            background: $primary;
+            border-color: $primary;
+        }
+
+        // Checkmark. Could be replaced with an image
+        &:checked + label:after {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 9px;
+            background: white;
+            width: 2px;
+            height: 2px;
+            box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+            transform: rotate(45deg);
+        }
+    }
+
+    .custom-checkbox {
+        height: 45px;
+        @include flexbox($a: center);
+
+        & > input[type="checkbox"] {
+            & + label {
+                &::before {
+                    content: "";
+                    width: 36px;
+                    height: 20px;
+                    border-radius: 99px;
+                    background-color: #f2f4f7;
+                    border: none;
+                }
+
+                &::after {
+                    content: "";
+                    width: 16px;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                    background-color: $white;
+                    position: absolute;
+                    left: 2px;
+                    top: 2px;
+                    transition: $transition;
+                }
+
+                .active {
+                    display: none;
+                }
+
+                .inactive {
+                    display: inline-block;
+                }
+            }
+
+            &:checked {
+                & + label {
+                    &::before {
+                        content: "";
+                        background-color: $primary;
+                    }
+
+                    &::after {
+                        content: "";
+                        width: 16px;
+                        height: 16px;
+                        left: 17px;
+                        transform: unset;
+                        box-shadow: none;
+                    }
+
+                    .active {
+                        display: inline-block;
+                    }
+
+                    .inactive {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn {
+        margin-top: 30px;
+        padding: 10px 43px;
+    }
+
+    .btn__group {
+        border-top: 1px solid $border;
+        padding-top: 16px;
+
+        .btn {
+            padding: 10px 16px;
+            margin-right: 12px;
+            margin-top: 0;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+            @include respond(phone-sm) {
+                font-size: 12px;
+                padding: 6px 10px;
+                margin-right: 6px;
+            }
+        }
+
+        @include respond(phone-xm) {
+            justify-content: space-between;
+
+            // .btn {
+            //     font-size: 14px;
+            //     padding: 8px 16px;
+            // }
+        }
+        @media (max-width: 370px) {
+            // display: block;
+
+            .btn {
+                font-size: 11px;
+                padding: 3px 6px;
+            }
+        }
+    }
+
+    .nice-select {
+        width: 100%;
+        height: 46px;
+        line-height: 44px;
+        text-transform: capitalize;
+        border-radius: $radius;
+
+        .list {
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+
+            .option {
+                padding: 0 18px;
+                text-align: left;
+                line-height: 44px;
+            }
+        }
+
+        &::after {
+            height: 8px;
+            width: 8px;
+        }
+    }
+}
+
+.form-padding {
+    padding: 30px;
+    border-radius: $radius * 2;
+    box-shadow: 0px 1px 2px 0px #1018280f;
+    box-shadow: 0px 1px 3px 0px #1018281a;
+
+    @include respond(phone-sm) {
+        padding: 25px;
+    }
+}
+
+/*********************************
+/* Contact Form End 
+**********************************/
+
+/*********************************
+/* Contact OverLay Start 
+**********************************/
+.contact__overlay {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.contact__info {
+    max-width: 620px;
+    margin: 0px 15px;
+    z-index: 1;
+
+    .section__title {
+        margin-bottom: 12px;
+        color: $white;
+    }
+
+    .content {
+        //styleName: Text md/Normal;
+        font-family: $default;
+        font-size: 16px;
+        font-weight: $regular;
+        line-height: 24px;
+        color: $white;
+        margin-bottom: 0;
+    }
+}
+
+.contact__meta {
+    margin-top: 50px;
+
+    @include respond(tabport) {
+        margin-top: 30px;
+    }
+
+    &__list {
+        li {
+            display: flex;
+            align-items: center;
+            //styleName: Text md/Normal;
+            font-family: $default;
+            font-size: 16px;
+            font-weight: $regular;
+            line-height: 24px;
+            color: $white;
+            margin-bottom: 36px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            @include respond(tabport) {
+                margin-bottom: 20px;
+            }
+
+            a {
+                color: $white;
+                display: inline-block;
+            }
+
+            .icon {
+                height: 24px;
+                width: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 8px;
+
+                img,
+                svg {
+                    width: 13px;
+                    height: auto;
+
+                    path {
+                        fill: $white;
+                    }
+                }
+            }
+
+            &:hover {
+                a {
+                    color: $primary;
+                }
+            }
+        }
+    }
+
+    .social__icon {
+        margin-top: 50px;
+
+        @include respond(tabport) {
+            margin-top: 30px;
+        }
+
+        a {
+            font-size: 24px;
+            margin-right: 24px;
+            color: $white;
+            display: inline-block;
+            transition: $transition;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+}
+
+/*********************************
+/* Contact OverLay End 
+**********************************/
+/*********************************
+/* Avatar Upload Start 
+**********************************/
+.avatar-wrapper {
+    display: flex;
+    position: relative;
+    margin-bottom: 24px;
+    text-align: center;
+
+    @include respond(phone) {
+        display: block;
+    }
+
+    .avatar-preview {
+        width: 64px;
+        height: 64px;
+        position: relative;
+        border-radius: 100%;
+        margin-right: 20px;
+        display: inline-block;
+
+        #imagePreview {
+            background-image: url("../images/avatar.jpg");
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @include respond(phone) {
+            margin: 0 0 10px;
+        }
+    }
+}
+
+.avatar-upload,
+.upload__drag {
+    background: transparent;
+    border: 1px solid $border;
+    box-sizing: border-box;
+    border-radius: $radius;
+    // padding: 16px 24px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    flex: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    // aspect-ratio: 45/31;
+
+    input {
+        display: none;
+    }
+
+    .preview__img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        pointer-events: none;
+        #close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            height: 30px;
+            width: 30px;
+            @include flexbox($a: center, $jc: center);
+            z-index: 9;
+            color: $white;
+            pointer-events: all;
+        }
+    }
+
+    #img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    img {
+        aspect-ratio: 45/32;
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+        border-radius: $radius;
+    }
+
+    label {
+        width: 100%;
+        height: 100%;
+        padding: 16px 24px;
+        text-align: center;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    span {
+        font-family: $default;
+        font-size: 14px;
+        font-weight: $regular;
+        line-height: 20px;
+        color: $content2;
+        display: block;
+
+        a {
+            color: $primary;
+            font-weight: $medium;
+            pointer-events: none;
+        }
+    }
+
+    .upload-icon {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+}
+
+.preview {
+    &__wrapper {
+        @include flexbox($a: center, $jc: flex-start);
+        margin-bottom: 24px;
+    }
+
+    &__item {
+        &__wrapper {
+            flex-basis: 25%;
+            min-width: 110px;
+            margin-top: 24px;
+        }
+
+        width: 100px;
+        aspect-ratio: 1/1;
+        border-radius: 8px;
+        border: 1px solid $border;
+        @include flexbox($a: center, $jc: center);
+        position: relative;
+
+        .upload-icon {
+            width: 46px;
+            transition: $transition;
+        }
+
+        .close-btn {
+            width: 24px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: none;
+            color: $content2;
+            background-color: transparent;
+            @include flexbox($a: center, $jc: center);
+            transition: $transition;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+
+            &:hover {
+                background-color: $primary;
+                color: $white;
+            }
+        }
+
+        &:hover {
+            .upload-icon {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+/*********************************
+/* Avatar Upload End 
+**********************************/

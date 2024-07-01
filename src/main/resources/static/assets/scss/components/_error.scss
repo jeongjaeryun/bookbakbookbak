@@ -1,0 +1,42 @@
+/*********************************
+/*  Error Section Start
+*********************************/
+.error-section {
+    padding: 100px 0;
+}
+.error-page__wrapper {
+    .error-page {
+        &__image {
+            img {
+                max-width: 562px;
+                height: 100%;
+                margin: 0 auto 20px;
+            }
+        }
+        &__content {
+            p {
+                font-family: $default;
+                font-size: 20px;
+                font-weight: $regular;
+                line-height: 28px;
+                color: $content2;
+                margin-bottom: 20px;
+
+                @include respond(phone) {
+                    font-size: 16px;
+                    br {
+                        display: none;
+                    }
+                }
+            }
+            .btn {
+                height: 44px;
+                padding: 10px 22px;
+            }
+        }
+    }
+}
+
+/*********************************
+/*  Error Section End
+*********************************/

@@ -1,0 +1,221 @@
+/*********************************
+/* Login Start
+*********************************/
+.popup__modal {
+    background: rgba($black, 0.8);
+
+    &.v2 {
+        .modal-dialog {
+            max-width: 505px;
+        }
+    }
+    &.v3 {
+        .modal-dialog {
+            max-width: 620px;
+        }
+    }
+    .modal {
+        &-dialog {
+            max-width: 1095px;
+
+            &-centered {
+                height: 665px;
+                // min-height: auto;
+            }
+        }
+        &-body {
+            padding: 0;
+        }
+        &-content {
+            border: none;
+            border-radius: $radius * 2;
+
+            @include respond(medium) {
+                margin: 0px 16px;
+            }
+        }
+        &-header {
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 99;
+            height: 24px;
+            width: 24px;
+
+            .btn-close {
+                padding: 0;
+                margin: 0;
+                border: none;
+                outline: none;
+
+                &:focus {
+                    border: none;
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+.popup__form {
+    @include flexbox($a: center, $jc: space-between);
+    flex-wrap: nowrap;
+
+    @include respond(tabport) {
+        display: block;
+    }
+    &.v2 {
+        .form__wrapper {
+            padding: 24px 24px 16px;
+
+            .form-group {
+                margin-bottom: 24px;
+            }
+        }
+    }
+    .popup {
+        &__logo {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+
+            @include respond(tabport) {
+                top: 30px;
+                left: 30px;
+            }
+        }
+        &__bg {
+            flex-basis: 50%;
+            aspect-ratio: 5.5/6.6;
+            display: block;
+            overflow: hidden;
+            border-radius: 16px 0px 0px 16px;
+
+            @include respond(tabland) {
+                aspect-ratio: auto;
+            }
+            @include respond(tabport) {
+                display: none;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 16px 0px 0px 16px;
+            }
+        }
+        &__title {
+            margin-bottom: 12px;
+
+            h4 {
+                font-size: 16px;
+                font-weight: $semibold;
+                line-height: 28px;
+                color: $heading2;
+                margin-bottom: 0;
+                text-transform: capitalize;
+            }
+            h2 {
+                @include respond(phone-xm) {
+                    font-size: 24px;
+                }
+            }
+            p {
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                color: $content3;
+                margin: 4px 0;
+            }
+        }
+    }
+    .form__wrapper {
+        flex: 1;
+        padding: 60px;
+
+        @include respond(medium) {
+            padding: 60px 40px;
+        }
+        @include respond(tabport) {
+            padding: 80px 40px 60px;
+        }
+        @include respond(phone) {
+            padding: 80px 30px 60px;
+        }
+
+        .account__desc {
+            font-family: $default;
+            font-size: 14px;
+            font-weight: $regular;
+            line-height: 20px;
+            color: #9d9d9d;
+            margin-top: 10px;
+            @include flexbox($a: center, $jc: space-between);
+
+            @include respond(phone-sm) {
+                display: block;
+                text-align: center;
+
+                .account__meta {
+                    margin-bottom: 5px;
+                }
+            }
+
+            a {
+                color: $primary;
+                display: inline-block;
+            }
+        }
+    }
+    .login__access {
+        @include flexbox($a: center, $jc: space-between);
+        flex-wrap: nowrap;
+
+        @include respond(phone-sm) {
+            display: block;
+        }
+
+        .btn {
+            font-size: 14px;
+            line-height: 20px;
+            color: #5a5a5a;
+            margin-top: 0;
+            padding: 11px;
+            flex-basis: calc(50% - 5px);
+
+            @include respond(phone-sm) {
+                flex-basis: 100%;
+                width: 100%;
+                margin-top: 10px;
+            }
+            img {
+                width: 21px;
+                height: auto;
+                margin-right: 10px;
+            }
+            &:hover {
+                color: $primary;
+                background: $white;
+                border-color: $primary;
+            }
+        }
+    }
+    .devider {
+        font-family: $default;
+        font-size: 16px;
+        font-weight: $regular;
+        line-height: 24px;
+        color: #a3a3a3;
+        text-transform: uppercase;
+        margin: 10px 0;
+    }
+}
+
+/*********************************
+/* Login End
+*********************************/

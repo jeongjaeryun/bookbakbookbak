@@ -1,0 +1,106 @@
+/*********************************
+/*  Element Tittle Start
+*********************************/
+
+.element-single {
+    &__header {
+        h1 {
+            font-size: 56px;
+            font-weight: $bold;
+            line-height: 68px;
+            display: block;
+            margin-bottom: 8px;
+            color: $heading;
+
+            @include respond(tabland) {
+                font-size: 40px;
+                line-height: 56px;
+            }
+            @include respond(phone-sm) {
+                font-size: 35px;
+            }
+        }
+        span {
+            font-family: $default;
+            font-size: 18px;
+            font-weight: $semibold;
+            line-height: 28px;
+            color: #7f7f7f;
+            display: block;
+
+            @include respond(phone) {
+                font-size: 16px;
+            }
+        }
+    }
+    &__content {
+        margin-top: 24px;
+
+        p {
+            font-size: 18px;
+            font-weight: $regular;
+            line-height: 28px;
+            color: #7f7f7f;
+            margin-bottom: 24px;
+
+            @include respond(phone) {
+                font-size: 16px;
+            }
+            span {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            a {
+                color: $primary;
+                text-decoration: none;
+            }
+        }
+    }
+    &__title {
+        font-size: 32px;
+        font-weight: $bold;
+        line-height: 39px;
+        color: $heading;
+        margin: 36px 0 24px;
+
+        @include respond(phone-sm) {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        @include respond(phone-xm) {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+    }
+    &__list {
+        padding-left: 15px;
+        display: block;
+        list-style: none;
+        li {
+            font-size: 18px;
+            font-weight: $regular;
+            line-height: 28px;
+            color: #7f7f7f;
+            margin-bottom: 14px;
+            position: relative;
+
+            &::before {
+                @include pseudo;
+                height: 5px;
+                width: 5px;
+                top: 10px;
+                left: -15px;
+                background: #7f7f7f;
+                border-radius: 50%;
+            }
+            @include respond(phone) {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+/*********************************
+/*  Element Tittle End
+*********************************/

@@ -1,0 +1,235 @@
+/*********************************
+/*  Common Css Start
+*********************************/
+.border-none {
+    border: none !important;
+}
+
+.border-30 {
+    border-radius: 30px !important;
+}
+
+.btn-red {
+    background: $red !important;
+
+    &:focus,
+    &:hover {
+        background: $heading !important;
+        box-shadow: none;
+    }
+}
+
+.btn-green {
+    background: $green !important;
+
+    &:focus,
+    &:hover {
+        background: $heading !important;
+        box-shadow: none;
+    }
+}
+
+.text {
+    &-primary {
+        color: $primary !important;
+    }
+
+    &-blue {
+        color: #2e90fa !important;
+    }
+}
+
+.text-black {
+    color: $black !important;
+}
+.text-gray {
+    color: #646464 !important;
+}
+
+button {
+    &:hover,
+    &:focus {
+        outline: 0px;
+    }
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+::selection {
+    background: $primary;
+    color: $white;
+}
+
+.shadow {
+    box-shadow: 0px 2px 4px -2px #1018280f !important;
+    box-shadow: 0px 4px 8px -2px #1018281a !important;
+}
+
+/*********************************
+/*  row Custom
+*********************************/
+
+.row > * {
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 1);
+    padding-left: calc(var(--bs-gutter-x) * 1);
+    margin-top: var(--bs-gutter-y);
+}
+
+.column-reverse {
+    @media screen and (max-width: 768px) {
+        flex-direction: column-reverse !important;
+    }
+}
+
+@media (min-width: 479px) and (max-width: 575px) {
+    .col-xs-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+/*********************************
+/*  Heading Typography
+*********************************/
+h1 {
+    font-family: $default;
+    font-size: 110px;
+    font-weight: $medium;
+    line-height: 110px;
+    letter-spacing: -0.02em;
+    color: $heading;
+
+    @include respond(xl) {
+        font-size: 100px;
+        // line-height: 80px;
+    }
+
+    @include respond(medium) {
+        font-size: 70px;
+        line-height: 80px;
+    }
+
+    @include respond(tabland) {
+        font-size: 60px;
+        line-height: 80px;
+    }
+
+    @include respond(phone) {
+        font-size: 55px;
+        line-height: 65px;
+    }
+
+    @include respond(phone-sm) {
+        font-size: 45px;
+        line-height: 55px;
+    }
+}
+
+h2 {
+    font-family: $default;
+    font-size: 36px;
+    font-weight: $bold;
+    line-height: 44px;
+    letter-spacing: -0.02em;
+    color: $heading;
+
+    @include respond(tabport) {
+        font-size: 30px;
+    }
+
+    @include respond(phone) {
+        line-height: 34px;
+    }
+}
+
+h4 {
+    font-family: $default;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: $medium;
+}
+
+/*********************************
+/*  Content Typography
+*********************************/
+p {
+    font-family: $default;
+    font-size: 16px;
+    font-weight: $regular;
+    line-height: 24px;
+    color: $content;
+}
+
+/*********************************
+/*  Section Tittle Start
+*********************************/
+.section-title {
+    margin-bottom: 40px;
+    @include flexbox($a: center);
+
+    &__wrap {
+        @include flexbox($a: center, $jc: inherit);
+
+        @include respond(phone-sm) {
+            display: block;
+        }
+    }
+
+    h2 {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin: 0 0 10px 0;
+        color: $heading;
+    }
+}
+
+.solid-btn {
+    font-family: $default;
+    font-size: 14px;
+    font-weight: $medium;
+    line-height: 20px;
+    color: $content3;
+    text-transform: uppercase;
+    transition: $transition;
+
+    i {
+        font-size: 16px;
+        margin-left: 3px;
+    }
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+/*********************************
+/*  Section Tittle End
+*********************************/
+
+/*********************************
+/* Custom Width
+*********************************/
+.w-25 {
+    width: 25%;
+}
+
+.w-33 {
+    width: 33.33%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-100 {
+    width: 100%;
+}

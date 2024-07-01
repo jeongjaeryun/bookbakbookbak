@@ -1,0 +1,129 @@
+/*********************************
+/*  Comming Soon Start
+*********************************/
+.full-page__wrapper {
+    @include flexbox($a: center, $jc: space-between);
+    flex-wrap: nowrap;
+    @include respond(tabport) {
+        // flex-direction: column-reverse;
+        display: block;
+    }
+    .full-page {
+        &__logo {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            z-index: 99;
+
+            img {
+                height: 100%;
+                min-height: 100% !important;
+                width: 100%;
+            }
+
+            @include respond(tabport) {
+                left: 15px;
+            }
+        }
+        &__image {
+            flex-basis: 50%;
+            height: 100vh;
+            position: relative;
+
+            @include respond(tabport) {
+                height: 100%;
+            }
+
+            &::after {
+                @include pseudo;
+                background: rgba($black, 0.5);
+            }
+            img {
+                max-width: 100%;
+                height: 100%;
+                margin: 0 auto 20px;
+                object-fit: cover;
+                object-position: center;
+
+                @include respond(tabport) {
+                    min-height: 600px;
+                }
+            }
+            @include respond(tabport) {
+                display: none;
+            }
+        }
+        &__inner {
+            flex-basis: 50%;
+            // flex: 1;
+
+            .full-page__logo {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+
+                img {
+                    width: auto;
+                    height: auto;
+                    display: inline-block;
+                }
+            }
+        }
+        &__content {
+            max-width: 570px;
+            margin: auto;
+            padding: 50px 30px;
+
+            @include respond(tabport) {
+                // @include flexbox($a: center, $jc: center);
+                // flex-wrap: nowrap;
+                // flex-direction: column;
+                // height: 100vh;
+                display: block;
+                // height: 100vh;
+                text-align: center;
+            }
+
+            @include respond(phone-sm) {
+                padding: 50px 15px;
+            }
+            h2 {
+                font-size: 42px;
+                line-height: 56px;
+                color: $heading2;
+                margin-bottom: 30px;
+
+                @include respond(phone-sm) {
+                    font-size: 34px;
+                    line-height: 45px;
+                }
+            }
+            p {
+                font-family: $default;
+                font-size: 14px;
+                font-weight: $regular;
+                line-height: 20px;
+                color: $content2;
+                margin-bottom: 0px;
+            }
+            .form-title {
+                font-family: $default;
+                font-size: 18px;
+                font-weight: $regular;
+                line-height: 28px;
+                color: $content2;
+            }
+            .cta__form {
+                margin-top: 16px;
+                justify-content: flex-start;
+                input {
+                    border: 1px solid $border;
+                }
+            }
+        }
+    }
+}
+/*********************************
+/*  Comming Soon End
+*********************************/

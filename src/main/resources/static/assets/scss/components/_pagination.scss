@@ -1,0 +1,125 @@
+/*********************************
+/*  Pagination Start
+*********************************/
+.pagination {
+    list-style: none;
+
+    &__item {
+        @include flexbox($a: center, $jc: center);
+
+        &:first-of-type {
+            margin-right: 32px;
+        }
+
+        &:last-of-type {
+            margin-left: 32px;
+        }
+
+        @include respond(tabport) {
+            &:first-of-type {
+                margin-right: 16px;
+            }
+
+            &:last-of-type {
+                margin-left: 16px;
+            }
+        }
+
+        @include respond(phone) {
+            &:first-of-type {
+                margin-right: 0;
+            }
+
+            &:last-of-type {
+                margin-left: 0;
+            }
+        }
+
+        .page-link {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: 8px;
+            border: 2px solid $white;
+            background-color: $white;
+            color: $content2;
+            text-align: center;
+            font-size: 14px;
+            line-height: 36px;
+            font-weight: $semibold;
+            letter-spacing: 0em;
+            transition: $transition;
+
+            @include respond(phone-sm) {
+                width: 32px;
+                height: 32px;
+                line-height: 28px;
+            }
+        }
+
+        &.active,
+        &:hover {
+            .page-link {
+                background: #FCF1F1;
+                color: #7F56D9;
+            }
+        }
+    }
+
+    &__jump {
+        font-family: $default;
+        @include flexbox($a: center, $jc: flex-end);
+        height: 36px;
+        font-size: 14px;
+        font-weight: $regular;
+        line-height: 20px;
+        letter-spacing: 0em;
+        color: $heading2;
+
+        .jump {
+            // &__label {}
+
+            &__input {
+                padding: 8px 14px;
+                margin: 0 12px;
+                max-width: 48px;
+                border: 1px solid $border;
+                border-radius: 8px;
+                border: 1px solid $border;
+                transition: $transition;
+
+                &:focus {
+                    outline: none;
+                    border-color: $primary;
+                }
+            }
+
+            &__btn {
+                padding: 8px 14px;
+                font-size: 14px;
+                font-weight: $regular;
+                line-height: 20px;
+                letter-spacing: 0em;
+
+
+                i {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+
+    &__wrapper {
+        @include flexbox($a: center, $jc: space-between);
+        margin-top: 60px;
+
+        @include respond(tabport) {
+            flex-direction: column;
+            justify-content: center;
+
+            .pagination__jump {
+                margin-top: 8px;
+            }
+        }
+    }
+}

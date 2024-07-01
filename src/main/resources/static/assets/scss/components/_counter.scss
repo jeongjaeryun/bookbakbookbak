@@ -1,0 +1,35 @@
+/*********************************
+/*  Counter Start
+*********************************/
+.counter {
+    color: $white;
+    &__num {
+        color: $primary;
+        margin-bottom: 8px;
+        span {
+            margin-right: -6px;
+        }
+        .prefix {}
+        .number {}
+        .suffix {}
+    }
+    &__title {
+        color: currentColor;
+    }
+    &--center {
+        text-align: center;
+    }
+    &--right {
+        text-align: right;
+    }
+}
+
+.counter__wrapper {
+    @include flexbox($a: flex-start, $jc: flex-start);
+    .counter {
+        margin-top: 40px;
+    }
+}
+/*********************************
+/*  Counter end
+*********************************/

@@ -1,0 +1,654 @@
+/*********************************
+/*  Product Detail Start
+*********************************/
+.product-detail {
+    font-family: $default;
+    text-align: left;
+
+    &__title {
+        font-size: 36px;
+        font-weight: $semibold;
+        line-height: 44px;
+        letter-spacing: -0.02em;
+        color: $heading;
+        text-transform: capitalize;
+
+        @include respond(tabland) {
+            font-size: 24px;
+            line-height: 28px;
+        }
+
+        @include respond(phone) {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+    &__meta {
+        @include flexbox($a: center, $jc: space-between);
+        margin-top: 21px;
+
+        @include respond(phone) {
+            display: block;
+            margin: 15px 0;
+        }
+        .rating {
+            ul li {
+                font-size: 13px;
+                height: 16px;
+                width: 16px;
+            }
+            .total__rating a {
+                font-size: 14px;
+                font-weight: $regular;
+                line-height: 17px;
+                color: $content;
+            }
+        }
+        .right-meta {
+            display: flex;
+            align-items: center;
+            li {
+                list-style: none;
+                margin-right: 16px;
+
+                &:last-of-type {
+                    margin: 0;
+                }
+                @include respond(phone-xm) {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .stock__item {
+            background: $green;
+            color: $white;
+            font-size: 16px;
+            line-height: 20px;
+            border-radius: 4px;
+            padding: 2px 8px;
+            display: inline-block;
+        }
+    }
+
+    // &__rating {}
+
+    &__price {
+        font-family: $default;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 38px;
+        letter-spacing: 0em;
+        color: $primary;
+        margin-top: 12px;
+
+        @include respond(tabland) {
+            font-size: 22px;
+            line-height: 24px;
+            margin-top: 8px;
+        }
+
+        del {
+            font-size: 0.8em;
+            color: $content3;
+            margin-left: 8px;
+        }
+    }
+
+    &__short_desc {
+        font-family: $default;
+        font-size: 14px;
+        font-weight: $regular;
+        line-height: 24px;
+        letter-spacing: 0em;
+        margin-top: 14px;
+        margin-bottom: 0;
+    }
+
+    &__attr {
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19px;
+        letter-spacing: 0em;
+        margin-right: 20px;
+
+        @include respond(tabland) {
+            margin-top: 12px;
+        }
+
+        .product__attr {
+            @include flexbox($a: center, $jc: flex-start);
+
+            label {
+                cursor: pointer;
+            }
+
+            & > span {
+                margin-right: 20px;
+            }
+
+            ul {
+                list-style: none;
+                @include flexbox($a: center, $jc: inherit);
+
+                li {
+                    display: inline-block;
+
+                    &:not(:last-of-type) {
+                        margin-right: 10px;
+
+                        @include respond(phone-xm) {
+                            margin-right: 12px !important;
+                        }
+                    }
+                }
+            }
+
+            &--color {
+                li {
+                    height: 22px;
+
+                    &:not(:last-of-type) {
+                        margin-right: 16px !important;
+                    }
+                }
+
+                input[type="radio"] {
+                    display: none;
+
+                    &:checked {
+                        & + label {
+                            &::before {
+                                border-color: $primary;
+                                box-shadow: 0px 4px 6px 0px #eb5e2840;
+                            }
+                        }
+                    }
+                }
+
+                label {
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    position: relative;
+                    margin-top: 3px;
+
+                    &::before {
+                        @include pseudo;
+                        display: block;
+                        width: calc(100% + 6px);
+                        height: calc(100% + 6px);
+                        border-radius: 50%;
+                        border: 1px solid $border;
+                        transition: $transition;
+                        @include transform;
+                    }
+                }
+            }
+
+            &--size {
+                @include respond(tabport, tabland) {
+                    margin-top: 8px;
+                }
+                @include respond(phone-xm) {
+                    margin-top: 8px;
+                }
+
+                li {
+                    &:not(:last-of-type) {
+                        margin-right: 16px !important;
+                    }
+                }
+
+                input[type="radio"] {
+                    display: none;
+
+                    &:checked {
+                        & + label {
+                            background-color: #fcf1f1;
+                            color: $primary;
+
+                            &::before {
+                                border-color: $primary;
+                                box-shadow: 0px 4px 6px 0px #eb5e2840;
+                            }
+                        }
+                    }
+                }
+
+                label {
+                    width: auto;
+                    height: 19px;
+                    padding: 4px 8px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 12px;
+                    color: $content3;
+                    border-radius: 3px;
+                    position: relative;
+                    transition: $transition;
+                    @include flexbox($a: center);
+
+                    @include respond(phone) {
+                        font-size: 14px;
+                    }
+
+                    &::before {
+                        @include pseudo;
+                        display: block;
+                        width: calc(100% + 6px);
+                        height: calc(100% + 6px);
+                        border-radius: 6px;
+                        color: $border;
+                        border: 1px solid $border;
+                        transition: $transition;
+                        @include transform;
+                    }
+                }
+            }
+        }
+    }
+
+    &__qty {
+        margin-top: 20px;
+        @include flexbox($a: center, $jc: flex-start);
+
+        .quantity {
+            .incressQnt,
+            .decressQnt {
+                .bar {
+                    width: 12px;
+
+                    &::before {
+                        height: 12px;
+                        right: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__action {
+        @include flexbox($a: center, $jc: space-between);
+        margin: 30px -10px 0;
+
+        @include respond(tabland) {
+            margin-top: 20px;
+        }
+
+        .item {
+            width: 50%;
+            padding: 0 10px;
+
+            .btn {
+                padding: 13.5px;
+                width: 100%;
+                text-transform: capitalize;
+
+                @include respond(phone) {
+                    padding: 8px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    &__accordion {
+        margin-top: 30px;
+
+        @include respond(tabland) {
+            margin-top: 20px;
+        }
+
+        .accordion {
+            &-item {
+                margin-bottom: 16px;
+                border: none;
+            }
+
+            &-button {
+                border: none;
+                padding: 0;
+                font-weight: $semibold;
+
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                &:not(.collapsed) {
+                    color: $primary;
+                    box-shadow: none;
+                    background-color: transparent;
+
+                    &::after {
+                        transform: rotate(-90deg);
+                        filter: hue-rotate(125deg);
+                    }
+                }
+            }
+
+            &-body {
+                position: relative;
+
+                p {
+                    @include respond(phone) {
+                        font-size: 14px;
+                    }
+                }
+
+                &::before {
+                    @include pseudo($t: 50%);
+                    transform: translateY(-50%);
+                    width: 1px;
+                    height: calc(100% - 10px);
+                    background-color: rgba($primary, 0.3);
+                }
+            }
+
+            // &-collapse {}
+        }
+    }
+
+    &__tab {
+    }
+
+    &--stroke {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19px;
+        letter-spacing: 0em;
+        margin-right: 20px;
+        margin-right: 20px;
+        text-transform: capitalize;
+
+        @include respond(phone) {
+            font-size: 14px;
+            line-height: 16px;
+        }
+    }
+}
+
+.product-info {
+    margin-top: 60px;
+
+    @include respond(tabland) {
+        margin-top: 40px;
+    }
+
+    .content__body {
+        font-family: $default;
+        font-size: 14px;
+        font-weight: $regular;
+        line-height: 26px;
+        letter-spacing: 0em;
+        margin-top: 30px;
+
+        @include respond(phone) {
+            margin-top: 16px;
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+.product-detail__wrapper-v2 {
+    padding: 30px 15px 30px 0px;
+
+    @include respond(tabport) {
+        padding: 0 0 40px;
+    }
+    .product-detail {
+        &__title {
+            font-size: 24px;
+            font-weight: $semibold;
+            line-height: 32px;
+            margin-bottom: 0;
+        }
+        &__meta {
+            margin: 18px 0 12px;
+
+            @include respond(phone) {
+                display: flex;
+            }
+        }
+        &__price {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: $semibold;
+            margin: 0;
+        }
+        &__action {
+            margin: 30px 0 0;
+        }
+    }
+}
+
+/*********************************
+/*  Product Detail End
+*********************************/
+/* ************************
+/*  Product Gallery start
+************************* */
+.product-gallery {
+    @include flexbox;
+
+    @include respond(xl) {
+        flex-direction: column-reverse;
+    }
+
+    .gallery-item {
+        border: 1px solid $border;
+        border-radius: 16px;
+        @include flexbox($a: center, $jc: center);
+        user-select: none;
+        transition: $transition;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    &__thumb {
+        width: 100%;
+        height: 560px;
+        flex-basis: 156px;
+        margin-right: 20px;
+
+        // @include respond(xl) {
+        //     height: 425px;
+        // }
+
+        @include respond(xl) {
+            height: inherit;
+            margin-right: 0;
+            margin-top: 20px;
+        }
+
+        @include respond(tabport) {
+            margin-right: 0;
+            margin-top: 20px;
+        }
+
+        @include respond(phone) {
+            margin-right: 0;
+            margin: 20px 0;
+            flex-basis: auto;
+        }
+
+        .swiper-slide {
+            &-active,
+            &:hover {
+                .gallery-item {
+                    border-color: $primary;
+                }
+            }
+        }
+
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 15/12; // 156px x  125px
+            padding: 12px;
+        }
+    }
+
+    &__main {
+        width: 100%;
+        max-height: 560px;
+        aspect-ratio: 4/4.5;
+        flex: 1;
+        border: 1px solid $border;
+        border-radius: 16px;
+        cursor: zoom-in;
+
+        .gallery-item {
+            width: 100%;
+            height: 100%;
+            padding: 50px;
+            border-color: transparent;
+
+            @include respond(tabland) {
+                padding: 32px;
+            }
+
+            @include respond(phone) {
+                padding: 24px;
+            }
+        }
+    }
+    &__v2 {
+        flex-direction: column;
+        border-right: 1px solid $border;
+        padding: 20px 20px 20px 5px;
+
+        @include respond(tabport) {
+            border: none;
+            padding: 40px 0 0;
+        }
+        @include respond(phone) {
+            max-width: 300px;
+            margin: auto;
+        }
+        .product-gallery {
+            &__thumb {
+                margin-right: 0;
+                margin-top: 20px;
+                flex-basis: 85px;
+
+                .swiper-wrapper,
+                .swiper-slide {
+                    height: 100px;
+                }
+            }
+            &__main {
+                border: none;
+                @include respond(tabport) {
+                    border: 1px solid $border;
+                }
+            }
+        }
+    }
+}
+
+/* ************************
+/*  Product Gallery End
+************************* */
+.wishlist__btn,
+.share__btn {
+    font-family: $default;
+    font-size: 14px;
+    font-weight: $regular;
+    line-height: 17px;
+    color: $content;
+    display: inline-block;
+    transition: $transition;
+
+    svg {
+        margin-right: 4px;
+        width: 16px;
+        height: auto;
+        transition: $transition;
+    }
+    &:hover {
+        color: $primary;
+
+        svg {
+            path {
+                stroke: $primary;
+            }
+        }
+    }
+}
+
+/* **************************************
+/*  Product Peview Modal Start
+*****************************************/
+.product__modal {
+    background: rgba($black, 0.8);
+    .modal {
+        &-dialog {
+            max-width: 960px;
+
+            &-centered {
+                height: 665px;
+                // min-height: auto;
+
+                @include respond(tabport) {
+                    height: auto;
+                }
+            }
+        }
+        &-body {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &-content {
+            border: none;
+            border-radius: $radius * 2;
+
+            @include respond(medium) {
+                margin: 0px 16px;
+            }
+            @include respond(phone-sm) {
+                margin: 0px 0px;
+            }
+        }
+        &-header {
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 99;
+            height: 24px;
+            width: 24px;
+
+            .btn-close {
+                padding: 0;
+                margin: 0;
+                border: none;
+                outline: none;
+
+                &:focus {
+                    border: none;
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+            @include respond(phone-sm) {
+                top: 10px;
+                right: 10px;
+            }
+        }
+    }
+}
+/* **************************************
+/*  Product Peview Modal End
+*****************************************/

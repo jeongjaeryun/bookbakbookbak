@@ -1,0 +1,74 @@
+/* ============================ */
+/* icon-box Start */
+/* ============================ */
+.icon-box {
+    padding: 30px;
+    border: 1px solid $border;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    transition: $transition;
+    &__content {
+        margin-top: 24px;
+        @include respond(tabport) {
+            margin-top: 16px;
+        }
+    }
+    &__icon {
+        color: rgba($heading2, 0.24);
+        &.text {
+            font-family: $default;
+            font-size: 60px;
+            font-weight: $bold;
+            line-height: 72px;
+            letter-spacing: -0.02em;
+            color: rgba($heading2, 0.24);
+            transition: $transition;
+        }
+
+    }
+    &__title {
+        font-family: $default;
+        font-size: 24px;
+        font-weight: $bold;
+        line-height: 32px;
+        letter-spacing: 0em;
+        margin-bottom: 0;
+
+    }
+    &__desc {
+        margin-top: 16px;
+        margin-bottom: 0;
+    }
+    &__btn {
+        margin-top: 16px;
+    }
+    &:hover {
+        border-color: $primary;
+        .icon-box__icon {
+            color: rgba($primary, 0.24);
+            &.text {
+                color: rgba($primary, 0.24);
+            }
+        }
+    }
+}
+
+.what-we-provide {
+    .icon-box {
+        // max-width: 358px;
+    }
+    .icon-box__wrapper {
+        @include flexbox($a: center);
+        margin: 0 -15px;
+        @include respond(tabport) {
+            margin-top: 32px;
+        }
+        .icon-box__col {
+            padding: 0 15px;
+            width: 50%;
+            @include respond(tabland) {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,515 @@
+/*********************************
+/* Banner Slider Section Strat 
+*********************************/
+.banner__slider__section {
+    padding: 70px 0px 55px;
+    // background: aliceblue;
+}
+.banner__content {
+    h4 {
+        font-family: $default;
+        font-size: 24px;
+        font-weight: $regular;
+        line-height: 29px;
+        color: $content;
+        margin-bottom: 16px;
+
+        @include respond(phone) {
+            font-size: 20px;
+        }
+    }
+    h1 {
+        margin-bottom: 0;
+    }
+    p {
+        font-family: $default;
+        font-size: 20px;
+        font-weight: $regular;
+        line-height: 30px;
+        color: $content2;
+        margin: 30px 0px 0px;
+        max-width: 533px;
+
+        @include respond(tabland) {
+            font-size: 18px;
+        }
+        @include respond(phone) {
+            font-size: 16px;
+        }
+    }
+    .hero-btn {
+        margin-top: 40px;
+
+        .btn {
+            color: $white;
+            font-weight: $semibold;
+            font-size: 20px;
+            line-height: 30px;
+            padding: 16px 28px;
+        }
+    }
+}
+
+.hero__swiper__slider {
+    @include respond(tabport) {
+        // display: none;
+        margin-bottom: 30px;
+    }
+    .swiper-wrapper {
+        margin-bottom: 45px;
+        .swiper-slide {
+            .slider__image {
+                position: relative;
+                // max-width: 580px;
+                height: 100%;
+                margin: auto;
+                aspect-ratio: 5.7/6.7;
+                display: block;
+
+                @include respond(xl) {
+                    max-width: 550px;
+                }
+                @include respond(tabland) {
+                    aspect-ratio: inherit;
+                }
+                img {
+                    // max-width: 580px;
+                    max-width: 572px;
+                    height: 100%;
+                    margin: auto;
+                    object-fit: cover;
+                    border-radius: 320px 40px 40px 40px;
+                    position: relative;
+
+                    @include respond(xl) {
+                        max-width: 470px;
+                        border-radius: 260px 40px 40px 40px;
+                    }
+                    @include respond(medium) {
+                        // max-width: 400px;
+                        max-width: 380px;
+                        border-radius: 220px 40px 40px 40px;
+                    }
+                    @include respond(phone) {
+                        border-radius: 210px 40px 40px 40px;
+                    }
+                    @include respond(phone-xm) {
+                        border-radius: 190px 40px 40px 40px;
+                    }
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: 316px;
+                    width: 316px;
+                    bottom: -30px;
+                    // right: -30px;
+                    right: 0;
+                    border-bottom-right-radius: 40px;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    border-top-color: transparent;
+                    border-left-color: transparent;
+
+                    @include respond(xl) {
+                        height: 255px;
+                        width: 255px;
+                        right: 10px;
+                    }
+                    @include respond(medium) {
+                        height: 215px;
+                        width: 215px;
+                    }
+                    @include respond(tabland) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: auto;
+        bottom: -7px;
+        left: 44%;
+        transform: translateX(-50%);
+        &::after {
+            display: none;
+        }
+
+        svg {
+            path {
+                // fill: $heading;
+                stroke: $heading;
+            }
+        }
+    }
+    .swiper-button-next {
+        margin-left: 18px;
+    }
+    .swiper-button-prev {
+        margin-left: -18px;
+    }
+    .swiper-pagination {
+        position: absolute;
+        top: 56%;
+        bottom: auto;
+        right: 0px;
+        left: auto;
+        width: auto;
+        transform: translateY(-50%);
+
+        @include respond(xl) {
+            right: 42px;
+        }
+        @media (max-width: 1439px) {
+            right: 0;
+        }
+
+        @include respond(tabport) {
+            right: 40px;
+        }
+        @include respond(phone) {
+            right: 5px;
+        }
+    }
+}
+
+/*********************************
+/* Banner Slider Section End 
+*********************************/
+
+/*********************************
+/*  Banner Slider v2 Section Start
+*********************************/
+.single__slide__wrapper {
+    @include bg-props;
+    position: relative;
+    border-radius: 16px;
+    padding: 95px 63px 100px;
+
+    @include respond(tabland) {
+        padding: 95px 30px 100px;
+    }
+
+    // &::after {
+    //     @include bg-overlay;
+    //     background: url("../images/banner/bg-shape.png");
+    //     background-repeat: no-repeat;
+    //     background-position: bottom right;
+    //     z-index: 1;
+    // }
+}
+
+.hero__wrapper {
+    position: relative;
+    z-index: 9;
+    max-width: 400px;
+    .hero {
+        &__subtitle {
+            font-family: $default;
+            font-size: 16px;
+            font-weight: $semibold;
+            color: $white;
+            line-height: 24px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+        &__title {
+            font-family: $default;
+            font-size: 50px;
+            font-weight: $bold;
+            color: $white;
+            line-height: 52.5px;
+            letter-spacing: -0.025em;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+
+            @include respond(phone-sm) {
+                font-size: 40px;
+                line-height: 60px;
+            }
+            @include respond(phone-xm) {
+                font-size: 35px;
+                line-height: 50px;
+            }
+        }
+        &__content {
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: $semibold;
+            color: $white;
+            margin-bottom: 30px;
+
+            @include respond(phone-sm) {
+                font-size: 16px;
+            }
+        }
+        &__btn {
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                background: $white;
+                color: $primary;
+                font-weight: $semibold;
+                padding: 14px 35px;
+
+                &:hover {
+                    background: $heading;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.banner__navigation {
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: auto;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: $transition;
+        &::after {
+            display: none;
+        }
+
+        svg {
+            path {
+                // fill: $heading;
+                stroke: $white;
+            }
+        }
+    }
+    .swiper-button-next {
+        margin-left: 18px;
+    }
+    .swiper-button-prev {
+        margin-left: -18px;
+    }
+    .swiper-pagination {
+        position: absolute;
+        top: 56%;
+        bottom: auto;
+        right: 0px;
+        left: auto;
+        width: auto;
+        transform: translateY(-50%);
+    }
+}
+
+/*********************************
+/*  Banner Section v2 End
+*********************************/
+
+/*********************************
+/*  Banner Slider v3 Section Start
+*********************************/
+.banner__slider__section__v3 {
+    @include bg-props;
+    position: relative;
+    background-position: center;
+    &::before {
+        @include bg-overlay;
+        background-color: rgba($content, 0.25);
+        z-index: 0;
+    }
+    .banner__content {
+        padding: 10% 0;
+        text-align: center;
+        position: relative;
+        @include respond(medium) {
+            padding: 10% 5%;
+        }
+        @include respond(phone) {
+            padding: 20% 10%;
+        }
+        span {
+            display: inline-block;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 150px;
+            font-weight: $bold;
+            line-height: 182px;
+            letter-spacing: 0.05em;
+            @include respond(medium) {
+                font-size: 120px;
+                line-height: 124px;
+            }
+            @include respond(tabport) {
+                font-size: 96px;
+                line-height: 100px;
+            }
+            @include respond(phone) {
+                font-size: 46px;
+                line-height: 56px;
+            }
+            &.text-stroke {
+                -webkit-text-stroke-width: 5px;
+                -webkit-text-fill-color: transparent;
+                -webkit-text-stroke-color: $white;
+                @include respond(phone) {
+                    -webkit-text-stroke-width: 2px;
+                }
+            }
+            // &.text-grad {
+            //     background: linear-gradient(89.37deg, #FFFFFF -0.19%, #EB5E28 114.46%);
+            //     -webkit-text-stroke-width: 5px;
+            //     -webkit-background-clip: text;
+            //     -webkit-text-fill-color: transparent;
+            //     -webkit-text-stroke-color: transparent;
+            // }
+        }
+    }
+}
+/*********************************
+/*  Banner Slider v3 Section end
+*********************************/
+
+/*********************************
+/*  Image banner start
+*********************************/
+.img-banner {
+    width: 100%;
+    @include bg-props;
+    background-image: url(../images/banner/about-banner.jpg);
+    @include flexbox($jc: flex-end);
+    border-radius: 16px;
+    overflow: hidden;
+    @include respond(tabport) {
+        background-position: left top;
+    }
+    &__inner {
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba($black, 0.1) -1.23%, $black 100%);
+        backdrop-filter: blur(12px);
+        padding: 90px 80px;
+        color: $white;
+        @include respond(tabland) {
+            width: 60%;
+            padding: 50px 32px;
+        }
+        @include respond(tabport) {
+            width: 100%;
+            padding: 50px 32px;
+            margin-top: 100%;
+        }
+    }
+    &__title {
+        color: currentColor;
+        margin-bottom: 16px;
+    }
+    &__desc {
+        color: currentColor;
+    }
+}
+
+/*********************************
+/*  Banner Section v5 Start
+*********************************/
+.banner__section__v5 {
+    background: $green;
+    padding: 180px 0;
+    position: relative;
+    z-index: 1;
+
+     &::after {
+        @include bg-overlay;
+        background: url("../images/banner/banner-5-shape.png");
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-size: 100%;
+        z-index: -1;
+    }
+
+    @include respond (tabland) {
+        padding: 130px 0;
+    }
+    @include respond (phone) {
+        padding: 90px 0;
+    }
+}
+
+.banner__wrapper {
+    max-width: 780px;
+    margin: auto;
+    text-align: center;
+    .banner {
+        &__title {
+            font-family: $default;
+            font-size: 70px;
+            font-weight: $bold;
+            line-height: 90px;
+            letter-spacing: -0.02em;
+            color: $white;
+        
+            @include respond(tabland) {
+                font-size: 60px;
+                line-height: 80px;
+            }
+        
+            @include respond(tabport) {
+                font-size: 46px;
+                line-height: 60px;
+            }
+        
+            @include respond(phone-sm) {
+                font-size: 40px;
+                line-height: 55px;
+            }
+            @include respond(phone-mid) {
+                font-size: 32px;
+                line-height: 45px;
+            }
+        }
+        &__meta {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 25px;
+
+            @include respond (phone) {
+                flex-direction: column;
+            }
+
+            p {
+                font-family: $default;
+                font-size: 16px;
+                line-height: 20px;
+                color: $white;
+                margin-bottom: 0;
+                display: flex;
+                align-items: center;
+                margin-right: 30px;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+                i {
+                    margin-right: 8px;
+                    display: inline-block;
+                }
+                @include respond (phone) {
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+    .search__form {
+        max-width: 100%;
+        height: 60px;
+        margin-top: 30px;
+
+        @include respond(phone-sm) {
+            height: 50px;
+        }
+    }
+}
+
+
+/*********************************
+/*  Banner Section v5 End
+*********************************/

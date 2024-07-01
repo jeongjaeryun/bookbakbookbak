@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/body}">
+<head>
+    <meta charset="UTF-8">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+    <script src='./assets/fullcalendar/dist/index.global.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        :root {
+  --fc-border-color: #bcbcbc;
+  --fc-daygrid-event-dot-width: 5px;
+  --fc-button-bg-color: #f17962;
+  --fc-button-border-color: #f17962;
+  --fc-button-hover-bg-color: #f16449;
+  --fc-button-hover-border-color: #f16449;
+  --fc-button-active-bg-color: #f16449;
+  --fc-button-active-border-color: #f16449;
+
+}
+.rev_add{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-right: 30px;
+}
+.fc-day{
+ padding:5px;
+}
+.container{
+width: 100%;
+display: flex;
+}
+.calendar{
+width: 100%;
+}
+.fc-media-screen{
+padding: 10px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 12px #dadada9c;
+}
+.side{
+width: 35%;
+}
+.rec{
+transition-duration: .3s;
+transition-property: all;
+border: solid 5px #ffd3dc;
+height: 150px;
+border-radius: 5px;
+padding: 20px;
+width: 90%;
+float: left;
+box-shadow: 3px 3px 12px #dadada9c;
+border-width: 12px 0 0;
+display:flex;
+justify-content: space-between;
+}
+.rec_right{
+display: flex;
+}
+.rec > h4{
+margin: 0px;
+}
+.rec:hover{
+transform: translateY(-5px);
+background-color: #ffd3dc;
+}
+.fc-col-header-cell-cushion{
+text-decoration: none;
+color: white;
+font-weight: 500;
+}
+.fc-daygrid-day-number{
+text-decoration: none;
+color: #103754;
+}
+.fc-col-header{
+background-color: #103754;
+}
+.fc .fc-button{
+border-radius: 2.25em;
+}
+
+button.fc-button:focus{
+border: none !important;
+outline:none !important;
+}
+
+#rec_book_img{
+width: 70px;
+display: inline-block;
+margin-right: 20px;
+box-shadow: 2px 2px 2px #7c7c7c70
+}
+.rec_text{
+display: inline-block;
+}
+.rec_text > p{
+margin: 0;
+font-size: 15px;
+color: gray;
+}
+.rec_text > span{
+background-color: #cecece;
+padding: 2px 7px;
+border-radius: 30px;
+}
+
+.search-form{
+    position: relative;
+    display: flex;
+}
+.search-form input{
+    width: 100%;
+    border-radius: 15px;
+}
+.search-form button{
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    right: 5px;
+    border-radius: 15px;
+}
+    </style>
+</head>
+<th:block layout:fragment="content">
+<div class="container">
+    <div class="side">
+        <div class="rev_add">
+            <h1>5월</h1>
+            <a href="" data-bs-toggle="modal" data-bs-target="#revAddModal">+</a>
+        </div>
+        <div class="rec">
+            <div class="rec_right">
+                <a href="#" class="nav-link me-4">
+                    <img id="rec_book_img" src="./assets/images/product-item1.png">
+                    <div class="rec_text">
+                        <span>완독</span>
+                        <h4>book1</h4>
+                        <p>시작일:2024.05.21</p>
+                        <p>종료일:2024.05.21</p>
+                    </div>
+                </a>
+            </div>
+            <h1>-</h1>
+        </div>
+    </div>
+    <div class="calendar" id="calendar">
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="revAddModal" tabindex="-1" aria-labelledby="revAddModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="tabs-listing">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel"
+                             aria-labelledby="nav-sign-in-tab">
+                            <div class="form-group py-3">
+                                <label class="mb-2" for="sign-in">독서 기록 추가</label>
+                                <form role="search" method="get" class="search-form" action="">
+                                    <input type="text" minlength="2" id="sign-in" name="username" placeholder="도서 제목이나 저자를 입력하세요"
+                                           class="form-control w-100 rounded-3 p-3" required>
+                                    <button type="submit" class="search-submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40"
+                                             viewBox="0 0 24 24">
+                                            <path d="M 9 2 C 5.1458514 2 2 5.1458514 2 9 C 2 12.854149 5.1458514 16 9 16 C 10.747998 16 12.345009 15.348024 13.574219 14.28125 L 14 14.707031 L 14 16 L 19.585938 21.585938 C 20.137937 22.137937 21.033938 22.137938 21.585938 21.585938 C 22.137938 21.033938 22.137938 20.137938 21.585938 19.585938 L 16 14 L 14.707031 14 L 14.28125 13.574219 C 15.348024 12.345009 16 10.747998 16 9 C 16 5.1458514 12.854149 2 9 2 z M 9 4 C 11.773268 4 14 6.2267316 14 9 C 14 11.773268 11.773268 14 9 14 C 6.2267316 14 4 11.773268 4 9 C 4 6.2267316 6.2267316 4 9 4 z"></path>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-dark w-100 my-3">검색</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="./assets/js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="./assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+         var calendarEl = document.getElementById('calendar');
+         var calendar = new FullCalendar.Calendar(calendarEl, {
+           initialView: 'dayGridMonth'
+         });
+         calendar.render();
+       });
+    </script>
+
+</th:block>
+</html>

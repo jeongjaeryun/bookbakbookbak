@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<th:block th:fragment="header">
+    <div class="search-popup" th:onclick="popUp()">
+        <div class="search-popup-container" th:onclick="popUp()">
+
+            <form role="search" method="get" class="search-form" action="">
+                <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value=""
+                       name="s" />
+                <button type="submit" class="search-submit"><Icon icon-name="searchIcon" class="search"><searchIcon/>
+                    <use xlink:href="#search"></use>
+                </Icon></button>
+            </form>
+
+            <h5 class="cat-list-title">Browse Categories</h5>
+
+            <ul class="cat-list">
+                <li class="cat-list-item">
+                    <a href="#" title="Romance">Romance</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="#" title="Thriller">Thriller</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="#" title="Sci-fi">Sci-fi</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="#" title="Cooking">Cooking</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="#" title="Health">Health</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="#" title="Lifestyle">Lifestyle</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="#" title="Fiction">Fiction</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <header id="header" class="site-header">
+        <nav id="header-nav" class="navbar navbar-expand-lg py-3">
+            <div class="container">
+                <a href="/" class="navbar-brand">
+                    <img src="../assets/images/logo.png" class="logo" style="width:167px">
+                </a>
+                <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 50 50">
+                        <path d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"></path>
+
+                        <use xlink:href="#navbar-icon"></use>
+                    </svg>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                    <div class="offcanvas-header px-4 pb-0">
+                        <a href="/" class="navbar-brand">
+                            <img src="/assets/images/logo.png" class="logo" style="width:167px">
+                        </a>
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"
+                                data-bs-target="#bdNavbar"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul id="navbar"
+                            class="navbar-nav text-uppercase justify-content-start justify-content-lg-center align-items-start align-items-lg-center flex-grow-1">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link me-4">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/" class="nav-link me-4">독서기록</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link me-4" href="blog.html">북리뷰</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/" class="nav-link me-4">북박톡</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/" class="nav-link me-4">북박도전</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link me-4" href="blog.html">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/myPage" class="nav-link me-4">마이페이지</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link me-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                   aria-expanded="false">Pages</a>
+                                <ul class="dropdown-menu animate slide border">
+                                    <li>
+                                        <a href="about.html" class="dropdown-item fw-light">About <span
+                                                class="badge bg-primary">Pro</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html" class="dropdown-item fw-light">Shop <span
+                                                class="badge bg-primary">Pro</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="single-product.html" class="dropdown-item fw-light">Single Product <span
+                                                class="badge bg-primary">Pro</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="cart.html" class="dropdown-item fw-light">Cart <span
+                                                class="badge bg-primary">Pro</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="checkout.html" class="dropdown-item fw-light">Checkout <span
+                                                class="badge bg-primary">Pro</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html" class="dropdown-item fw-light">Blog <span
+                                                class="badge bg-primary">Pro</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="single-post.html" class="dropdown-item fw-light">Single Post <span
+                                                class="badge bg-primary">Pro</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html" class="dropdown-item fw-light">Contact <span
+                                                class="badge bg-primary">Pro</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="user-items d-flex">
+                            <ul class="d-flex justify-content-end list-unstyled mb-0">
+                                <li class="search-item pe-3">
+                                    <a href="#" class="search-button" th:onclick="popup">
+                                        <Icon icon-name="searchIcon" class="search"><searchIcon/>
+                                            <use xlink:href="#search"></use>
+                                        </Icon>
+                                    </a>
+                                </li>
+                                <li class="pe-3">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                        <Icon icon-name='userIcon' class="user"><userIcon/>
+                                            <use xlink:href="#user"></use>
+                                        </Icon>
+                                    </a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header border-bottom-0">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="tabs-listing">
+                                                        <nav>
+                                                            <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+                                                                <button class="nav-link text-capitalize active" id="nav-sign-in-tab" data-bs-toggle="tab"
+                                                                        data-bs-target="#nav-sign-in" type="button" role="tab" aria-controls="nav-sign-in"
+                                                                        aria-selected="true">로그인</button>
+                                                                <button class="nav-link text-capitalize" id="nav-find-tab" data-bs-toggle="tab"
+                                                                        data-bs-target="#nav-find" type="button" role="tab" aria-controls="nav-find"
+                                                                        aria-selected="false">비밀번호 찾기</button>
+                                                                <button class="nav-link text-capitalize" id="nav-register-tab" data-bs-toggle="tab"
+                                                                        data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register"
+                                                                        aria-selected="false">회원가입</button>
+                                                            </div>
+                                                        </nav>
+                                                        <div class="tab-content" id="nav-tabContent">
+                                                            <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel"
+                                                                 aria-labelledby="nav-sign-in-tab">
+                                                                <div class="form-group py-3">
+                                                                    <label class="mb-2" for="email">이메일 *</label>
+                                                                    <input type="text" id="email" minlength="2" name="username" placeholder="이메일을 입력하세요"
+                                                                           class="form-control w-100 rounded-3 p-3" required>
+                                                                </div>
+                                                                <div class="form-group pb-3">
+                                                                    <label class="mb-2" for="password1">비밀번호 *</label>
+                                                                    <input type="password" id="password1" minlength="2" name="password" placeholder="비밀번호를 입력하세요"
+                                                                           class="form-control w-100 rounded-3 p-3" required>
+                                                                </div>
+                                                                <button type="submit" name="submit" class="btn btn-dark w-100 my-3">로그인</button>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="nav-find" role="tabpanel"
+                                                                 aria-labelledby="nav-find-tab">
+                                                                <div class="form-group py-3">
+                                                                    <label class="mb-2" for="email1">이메일 *</label>
+                                                                    <input type="text" id="email1" minlength="2" name="username" placeholder="이메일을 입력하세요"
+                                                                           class="form-control w-100 rounded-3 p-3" required>
+                                                                </div>
+                                                                <button type="submit" name="submit" class="btn btn-dark w-100 my-3">찾기</button>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="nav-register" role="tabpanel"
+                                                                 aria-labelledby="nav-register-tab">
+                                                                <div class="form-group py-3">
+                                                                    <label class="mb-2" for="register">이메일 *</label>
+                                                                    <div style="width:100%;position:relative">
+                                                                        <input type="text" minlength="2" name="username" placeholder="이메일을 입력하세요"
+                                                                               class="form-control w-100 rounded-3 p-3" required>
+                                                                        <button class="btn rounded-3 p-3 d-flex align-items-center"
+                                                                                style="position:absolute;top:0; right:5px" type="submit">중복체크</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group pb-3">
+                                                                    <label class="mb-2" for="tel">전화번호 *</label>
+                                                                    <div style="width:100%;position:relative">
+                                                                        <input type="text" id="tel" minlength="2" name="username" placeholder="전화번호를 입력하세요"
+                                                                               class="form-control w-100 rounded-3 p-3" required>
+                                                                        <button class="btn rounded-3 p-3 d-flex align-items-center"
+                                                                                style="position:absolute;top:0; right:5px" type="submit">인증번호</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group pb-3">
+                                                                    <label class="mb-2" for="register">인증번호 *</label>
+                                                                    <div style="width:100%;position:relative">
+                                                                        <input type="text" id="register" minlength="2" name="username" placeholder="인증번호를 입력하세요"
+                                                                               class="form-control w-100 rounded-3 p-3" required>
+                                                                        <button class="btn rounded-3 p-3 d-flex align-items-center"
+                                                                                style="position:absolute;top:0; right:5px" type="submit">번호인증</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group pb-3">
+                                                                    <label class="mb-2" for="nickName">닉네임 *</label>
+                                                                    <div style="width:100%;position:relative">
+                                                                        <input type="text" id="nickName" minlength="2" name="username" placeholder="닉네임을 입력하세요"
+                                                                               class="form-control w-100 rounded-3 p-3" required>
+                                                                        <button class="btn rounded-3 p-3 d-flex align-items-center"
+                                                                                style="position:absolute;top:0; right:5px" type="submit">중복체크</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group pb-3">
+                                                                    <label class="mb-2" for="password">비밀번호 *</label>
+                                                                    <input type="password" id="password" minlength="2" name="password" placeholder="비밀번호를 입력하세요"
+                                                                           class="form-control w-100 rounded-3 p-3" required>
+                                                                </div>
+                                                                <button type="submit" name="submit" class="btn btn-dark w-100 my-3">회원가입</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="cart-dropdown dropdown">
+                                    <a href="cart.html" class="dropdown-toggle" data-bs-toggle="dropdown" role="button"
+                                       aria-expanded="false">
+                                        <Icon icon-name="cartIcon" class="cart"><cartIcon/>
+                                            <use xlink:href="#cart"></use>
+                                        </Icon><span class="fs-6 fw-light">(02)</span>
+                                    </a>
+                                    <div class="dropdown-menu animate slide dropdown-menu-start dropdown-menu-lg-end p-3">
+                                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="text-primary">Your cart</span>
+                                            <span class="badge bg-primary rounded-pill">2</span>
+                                        </h4>
+                                        <ul class="list-group mb-3">
+                                            <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
+                                                <div>
+                                                    <h5>
+                                                        <a href="single-product.html">Secrets of the Alchemist</a>
+                                                    </h5>
+                                                    <small>High quality in good price.</small>
+                                                </div>
+                                                <span class="text-primary">$870</span>
+                                            </li>
+                                            <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
+                                                <div>
+                                                    <h5>
+                                                        <a href="single-product.html">Quest for the Lost City</a>
+                                                    </h5>
+                                                    <small>Professional Quest for the Lost City.</small>
+                                                </div>
+                                                <span class="text-primary">$600</span>
+                                            </li>
+                                            <li class="list-group-item bg-transparent d-flex justify-content-between">
+                                                <span class="text-capitalize"><b>Total (USD)</b></span>
+                                                <strong>$1470</strong>
+                                            </li>
+                                        </ul>
+                                        <div class="d-flex flex-wrap justify-content-center">
+                                            <a href="cart.html" class="w-100 btn btn-dark mb-1" type="submit">View Cart</a>
+                                            <a href="checkout.html" class="w-100 btn btn-primary" type="submit">Go to checkout</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <script th:inline="javascript">
+        function popUp(){
+            document.querySelector('.search-popup').classList.toggle('is-visible')
+        }
+    </script>
+    </th:block>
+</body>
+</html>

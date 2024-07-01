@@ -1,0 +1,262 @@
+/*********************************
+/* SideBar Start
+*********************************/
+.user__dashboard {
+    padding: 50px 0 140px;
+
+    @include respond(tabland) {
+        padding: 50px 0 100px;
+    }
+}
+
+.sideBar {
+    border: 1px solid $border;
+    border-radius: $radius * 2;
+    padding: 32px 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    // height: 980px;
+    height: 100%;
+    min-height: 580px;
+    max-height: 800px;
+    position: sticky;
+    top: 150px;
+
+    @include respond(xl) {
+        padding: 15px;
+    }
+
+    .nav__item {
+        padding: 0;
+        li {
+            list-style: none;
+        }
+        .nav__list {
+            position: relative;
+            list-style: none;
+            @include flexbox($a: center, $jc: space-between);
+            flex-wrap: nowrap;
+            height: 48px;
+            margin-bottom: 4px;
+            border-radius: 6px;
+            transition: $transition;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            a {
+                font-family: $default;
+                font-size: 16px;
+                font-weight: $medium;
+                line-height: 24px;
+                letter-spacing: 0px;
+                color: $content2;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                padding: 0px 20px;
+                text-decoration: none;
+                transition: $transition;
+
+                @include respond(medium) {
+                    font-size: 15px;
+                }
+
+                .icon {
+                    margin-right: 12px;
+                    height: 24px;
+                    width: 24px;
+                    @include flexbox($a: center, $jc: center);
+
+                    svg {
+                        path {
+                            // transition: $transition;
+                            // stroke: $content2;
+                        }
+                    }
+
+                    @include respond(medium) {
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 8px;
+                    }
+                }
+
+                .link__name {
+                    white-space: nowrap;
+                    pointer-events: none;
+                }
+            }
+
+            &.active,
+            &:hover {
+                background: rgba($primary, 0.08);
+
+                a {
+                    color: $primary;
+                }
+
+                .icon {
+                    svg {
+                        path {
+                            // fill: $primary;
+                            // stroke: $primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tracking__message {
+    padding: 20px 16px;
+    background: #fef7f5;
+    border-radius: $radius;
+    margin-top: 24px;
+    .title {
+        font-size: 14px;
+        font-weight: $medium;
+        line-height: 20px;
+        color: $heading3;
+        margin-bottom: 4px;
+    }
+    .content {
+        font-size: 14px;
+        font-weight: $regular;
+        line-height: 20px;
+        color: $content3;
+        margin-bottom: 0;
+    }
+    .btn__group {
+        margin-top: 16px;
+        .solid-btn {
+            text-transform: capitalize;
+            color: $content3;
+            margin-right: 12px;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+        .tracking-btn {
+            color: $heading3;
+        }
+    }
+}
+
+/*********************************
+/* SideBar End
+*********************************/
+
+/*********************************
+/* Dashboard Title Start
+*********************************/
+.dashboard__title {
+    margin-bottom: 30px;
+    @include flexbox($a: center, $jc: space-between);
+    .title {
+        line-height: 32px;
+        font-weight: $bold;
+        color: $heading;
+        margin-bottom: 0;
+        text-transform: capitalize;
+
+        @include respond(phone-xm) {
+            font-size: 22px;
+        }
+    }
+    .btn {
+        @include respond(phone-xm) {
+            font-size: 14px;
+            line-height: 21px;
+            padding: 7px 10px;
+        }
+    }
+
+    @include respond(tabland) {
+        margin-top: 30px;
+    }
+    &--v2 {
+        margin-bottom: 24px;
+        .title {
+            font-size: 18px;
+            font-weight: $bold;
+            line-height: 28px;
+            color: $heading2;
+        }
+    }
+}
+
+.dashboard__inner {
+    @include flexbox($a: center, $jc: space-between);
+    flex-wrap: nowrap;
+    margin-bottom: 24px;
+
+    @include respond(phone) {
+        flex-direction: column;
+    }
+}
+/*********************************
+/* Dashboard Title End
+*********************************/
+
+/*********************************
+/* Progress Bar Satrt
+*********************************/
+
+.order__percent {
+    margin-bottom: 20px;
+}
+.radial__progress--pie {
+    position: relative;
+    width: 65px;
+    height: 65px;
+
+    &__svg {
+        position: relative;
+        display: inline-block;
+        width: 65px;
+        height: 65px;
+        overflow: hidden;
+        vertical-align: middle;
+        background: transparent;
+        border-radius: 50%;
+        -webkit-filter: drop-shadow(0px 0px 20px rgba(170, 170, 170, 0.161));
+        filter: drop-shadow(0px 0px 20px rgba(170, 170, 170, 0.161));
+
+        svg {
+            position: absolute;
+            display: inline-block;
+            margin: 0 auto;
+            width: 65px;
+            height: 65px;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    }
+    &__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+    &__number {
+        font-family: $default;
+        font-size: 14px;
+        line-height: 20px;
+        color: $heading3;
+        font-weight: $medium;
+        margin-bottom: 0;
+    }
+}
+
+/*********************************
+/* Progress Bar End
+*********************************/

@@ -1,0 +1,15 @@
+.partner {
+    &__item {
+        width: 100%;
+        padding: 23px;
+        border-radius: 16px;
+        border: 1px solid $border;
+        @include flexbox($jc:center, $a: center);
+        img {
+            width: 106px;
+            height: 32px;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+}

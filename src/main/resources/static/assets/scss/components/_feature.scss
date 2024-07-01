@@ -1,0 +1,69 @@
+/*********************************
+/*  Feature Start
+*********************************/
+
+.feature__section {
+    padding: 90px 0;
+}
+.feature__single__item {
+    display: flex;
+    align-items: center;
+    padding: 30px 20px;
+    border-radius: 16px;
+
+    @include respond(xl) {
+        padding: 30px 15px;
+    }
+    @include respond(medium) {
+        margin-bottom: 30px;
+    }
+    .feature {
+        &__image {
+            margin-right: 15px;
+            img {
+                height: 54px;
+                width: 53px;
+                display: block;
+                transition: $transition;
+            }
+        }
+        &__content {
+            p {
+                font-size: 16px;
+                font-weight: $regular;
+                line-height: 24px;
+                color: $content;
+                letter-spacing: -0.02em;
+                margin-bottom: 0;
+
+                @include respond(xl) {
+                    font-size: 13px;
+                }
+            }
+        }
+        &__title {
+            font-size: 22px;
+            color: $content;
+            line-height: 24px;
+            display: block;
+            margin-bottom: 6px;
+
+            @include respond(xl) {
+                font-size: 18px;
+            }
+            @include respond(phone-sm) {
+                font-size: 18px;
+            }
+        }
+    }
+    &:hover {
+        .feature {
+            &__image img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+/*********************************
+/*  Feature End
+*********************************/

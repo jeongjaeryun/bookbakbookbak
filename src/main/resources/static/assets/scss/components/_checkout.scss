@@ -1,0 +1,329 @@
+/*********************************
+/* CheckOut Start
+**********************************/
+.step-header {
+    @include flexbox($a: center, $jc: flex-start);
+}
+
+.step-num {
+    display: inline-block;
+    font-family: $default;
+    font-size: 16px;
+    font-weight: $bold;
+    line-height: 20px;
+    color: $black;
+    padding: 6px 12px;
+    background-color: #f2f4f7;
+    border-radius: 6px;
+    margin-right: 20px;
+}
+
+.step-title {
+    font-family: $default;
+    font-size: 30px;
+    font-weight: $bold;
+    line-height: 38px;
+    letter-spacing: 0em;
+    color: $black;
+    margin-bottom: 0;
+}
+
+.checkout__form {
+    margin-bottom: 150px;
+
+    &:last-of-type {
+        margin-bottom: 80px;
+    }
+
+    @include respond(tabland) {
+        margin-bottom: 50px;
+    }
+
+    input[type="tel"] {
+        padding-left: 73px;
+    }
+
+    .country-code {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border-color: transparent;
+        z-index: 1;
+        background: transparent;
+    }
+
+    .input-info__save {
+        a {
+            font-size: 12px;
+            font-weight: $regular;
+            line-height: 18px;
+            letter-spacing: 0em;
+            text-transform: lowercase;
+            color: $primary;
+        }
+    }
+
+    .final-submit-btn {
+        width: 100%;
+    }
+
+    .sub-title {
+        font-size: 20px;
+        font-weight: $semibold;
+        line-height: 30px;
+        letter-spacing: 0em;
+        margin-bottom: 16px;
+        color: $heading;
+    }
+
+    .delivery-input {
+        display: none;
+
+        & + label {
+            @include flexbox($a: center, $jc: flex-start);
+            padding: 12px 16px;
+            border: 1px solid $border;
+            border-radius: 8px;
+            cursor: pointer;
+
+            .icon {
+                margin-right: 12px;
+
+                img {
+                    height: 30px;
+                }
+            }
+
+            .content {
+                .title {
+                    font-size: 14px;
+                    font-weight: $semibold;
+                    line-height: 20px;
+                    letter-spacing: 0em;
+                    color: $heading2;
+                    margin-bottom: 2px;
+                    display: block;
+                }
+
+                .desc {
+                    font-size: 12px;
+                    font-weight: regular;
+                    line-height: 18px;
+                    letter-spacing: 0em;
+                    color: $content2;
+                    margin-bottom: 0;
+                    display: block;
+                }
+            }
+
+            .price {
+                font-size: 14px;
+                font-weight: $bold;
+                line-height: 20px;
+                letter-spacing: 0em;
+                margin-left: auto;
+                margin-right: 12px;
+                color: $content2;
+            }
+
+            .status {
+                width: 16px;
+                height: 16px;
+                border: 2px solid $white;
+                border-radius: 50%;
+                box-shadow: 0 0 0 1.5px $heading2;
+                transition: $transition;
+            }
+        }
+
+        &:checked {
+            & + label {
+                .status {
+                    background-color: $primary;
+                    box-shadow: 0 0 0 1.5px $primary;
+                }
+            }
+        }
+    }
+}
+
+.input-dropdown {
+    .country-code {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border-color: transparent;
+        z-index: 1;
+        background: transparent;
+    }
+    input[type="tel"] {
+        padding-left: 73px;
+    }
+}
+
+/*********************************
+/* CheckOut End
+**********************************/
+/*********************************
+/* Cupon Start
+**********************************/
+.coupon {
+    //styleName: Text sm/Normal;
+    font-family: $default;
+    font-size: 14px;
+    font-weight: $regular;
+    line-height: 20px;
+    color: $primary;
+    display: block;
+    margin-top: 30px;
+
+    a {
+        color: $primary;
+        display: block;
+    }
+}
+
+/*********************************
+/* Cupon End
+**********************************/
+
+/*********************************
+/* Confirm Detail Start
+**********************************/
+.confirm__details {
+    border: 1px solid $border;
+    border-radius: $radius * 2;
+    padding: 40px;
+    margin-bottom: 80px;
+    position: relative;
+
+    @include respond(tabland) {
+        margin-bottom: 50px;
+    }
+
+    &__item {
+        margin-bottom: 30px;
+        position: relative;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .edit__btn {
+            font-family: $default;
+            font-size: 14px;
+            font-weight: $medium;
+            line-height: 20px;
+            color: $primary;
+            padding: 5.5px 14px;
+            border-radius: 6px;
+            background: #fcf1f1;
+            text-transform: capitalize;
+        }
+
+        .s-header__flex {
+            @include flexbox($a: center, $jc: space-between);
+            margin-bottom: 6px;
+        }
+
+        .step-header {
+            .step {
+                &-num {
+                    width: 35px;
+                    height: 32px;
+                    @include flexbox($a: center, $jc: center);
+                    flex-wrap: nowrap;
+                    padding: 0;
+                    margin-right: 18px;
+                }
+
+                &-title {
+                    font-size: 24px;
+                    line-height: 32px;
+                    color: $heading3;
+
+                    @include respond(medium) {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
+        .para {
+            font-size: 14px;
+            font-weight: $regular;
+            line-height: 20px;
+            color: $content3;
+            margin-top: 8px;
+            margin-bottom: 12px;
+        }
+
+        .information {
+            margin-left: 53px;
+
+            li {
+                font-family: $default;
+                font-size: 14px;
+                font-weight: $regular;
+                line-height: 20px;
+                color: $content2;
+                margin-bottom: 4px;
+                list-style: none;
+                display: flex;
+                align-items: center;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                span {
+                    font-weight: $semibold;
+                }
+
+                .icon {
+                    height: 24px;
+                    width: 24px;
+                    @include flexbox($a: center, $jc: center);
+                    margin-right: 6px;
+
+                    img {
+                        width: auto;
+                        height: auto;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        &--v2 {
+            padding: 24px;
+            border: 1px solid $border;
+            box-shadow: 0px 1px 2px 0px #1018280f;
+            box-shadow: 0px 1px 3px 0px #1018281a;
+            border-radius: $radius * 2;
+
+            .step-header {
+                .step {
+                    &-title {
+                        font-size: 16px;
+                        font-weight: $medium;
+                        line-height: 24px;
+                        color: #101828;
+                    }
+                }
+            }
+
+            .information {
+                margin-left: 0;
+
+                li {
+                    margin-bottom: 6px;
+                }
+            }
+        }
+    }
+}
+
+/*********************************
+/* Confirm Detail End
+**********************************/

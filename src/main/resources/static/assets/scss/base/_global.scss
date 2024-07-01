@@ -1,0 +1,234 @@
+/*********************************
+/*  Input Apperance Start
+*********************************/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+/*********************************
+/*  Input Apperance End
+*********************************/
+
+/*********************************
+/* Custom Scroll Bar Start
+*********************************/
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 4px $primary;
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $primary;
+    border-radius: 10px;
+}
+/*********************************
+/* Custom Scroll Bar End
+*********************************/
+
+/*********************************
+/* Preloader Css Start
+*********************************/
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $primary;
+    z-index: 99999999;
+    width: 100%;
+    height: auto;
+    // display: none;
+
+    #status {
+        width: 120px;
+        height: 120px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        @include transform;
+        @include flexbox($a: center, $jc: center);
+        // padding: 25px;
+        text-align: center;
+
+        &::before {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            width: 100% !important;
+            height: 100% !important;
+            left: 0;
+            top: 0;
+            opacity: 1;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            border-bottom: 2px solid $white;
+            border-radius: 50%;
+            animation: rotating 6s linear infinite;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            width: 90%;
+            height: 90%;
+            left: 0;
+            top: 0;
+            opacity: 1;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            border-top: 2px solid $white;
+            border-radius: 50%;
+            animation: rotating 6s linear infinite;
+        }
+        img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            margin: auto;
+            display: block;
+        }
+    }
+}
+
+@keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/*********************************
+/* Preloader Css End
+*********************************/
+
+/*********************************
+/* Scroll Up Css Start
+*********************************/
+.scroll-top {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    position: fixed;
+    bottom: -30px;
+    right: 30px;
+    font-size: 14px;
+    border-radius: 50%;
+    z-index: 99;
+    color: $white;
+    text-align: center;
+    cursor: pointer;
+    background: $primary;
+    text-transform: capitalize;
+    transition: 1s ease;
+    border: none;
+    opacity: 0;
+
+    &.open {
+        bottom: 30px;
+        opacity: 1;
+        right: 30px;
+    }
+    &::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        top: 100%;
+        left: 5%;
+        height: 10px;
+        width: 90%;
+        opacity: 1;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 80%);
+    }
+    &:hover {
+        background: $heading;
+    }
+}
+
+/*********************************
+/* Scroll Up Css End
+*********************************/
+/*********************************
+/* Swiper Arrow Center Start
+*********************************/
+.swiper__arrow-center {
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: $primary;
+        color: $white;
+        font-size: 13px;
+        bottom: 0;
+        margin: 0;
+        @include flexbox($a: center, $jc: center);
+        transition: $transition;
+
+        @include respond(tabport) {
+            height: 50px;
+            width: 50px;
+        }
+        @include respond(phone) {
+            height: 40px;
+            width: 40px;
+        }
+        &::after {
+            display: none;
+        }
+
+        svg {
+            path {
+                // fill: $heading;
+                stroke: $white;
+            }
+        }
+    }
+    .swiper-button-next {
+        margin-right: 50px;
+        left: auto;
+        right: 0;
+
+        @include respond(phone) {
+            margin-right: 20px;
+        }
+    }
+    .swiper-button-prev {
+        margin-left: 50px;
+
+        @include respond(phone) {
+            margin-left: 20px;
+        }
+    }
+}
+
+/*********************************
+/* Swiper Arrow Center End
+*********************************/

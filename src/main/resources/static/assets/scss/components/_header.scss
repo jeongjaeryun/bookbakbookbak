@@ -1,0 +1,1638 @@
+/*********************************
+/* Header Top Wrapper Start 
+*********************************/
+.header__topbar__wrapper {
+    border-bottom: 1px solid #f2f4f7;
+    padding: 10px 0;
+
+    @include respond (tabland) {
+        display: none;
+    }
+    .header__flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
+    .header__topbar {
+        &__nav {
+            display: flex;
+            align-items: center;
+
+            li {
+                font-family: $default;
+                font-size: 14px;
+                line-height: 22px;
+                font-weight: $medium;
+                list-style: none;
+                color: $content2;
+                text-transform: capitalize;
+                margin-right: 25px;
+        
+                &:last-of-type {
+                    margin-right: 0;
+                }
+        
+                a {
+                    color: currentColor;
+                    display: inline-block;
+                    transition: $transition;
+        
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+        &__right {
+            display: flex;
+            align-items: center;
+
+            .meta__item {
+                li {
+                    font-size: 14px;
+                    i {
+                        margin-right: 2px;
+                    }
+                }
+            }
+            .follow__item {
+                margin-left: 15px;
+                border-left: 1px solid $border;
+                padding-left: 15px;
+                span {
+                    font-family: $default;
+                    font-size: 14px;
+                    line-height: 22px;
+                    font-weight: $medium;
+                    list-style: none;
+                    color: $content2;
+                    text-transform: capitalize;
+                    margin-right: 10px;
+
+                }
+                a {
+                    font-family: $default;
+                    font-size: 14px;
+                    line-height: 22px;
+                    font-weight: $medium;
+                    list-style: none;
+                    color: $content2;
+                    text-transform: capitalize;
+                    margin-right: 5px;
+                    display: inline-block;
+                    transition: $transition;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.meta__flex {
+    display: flex;
+    align-items: center;
+
+    a {
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+/*********************************
+/* Header Top Wrapper End 
+*********************************/
+
+/*********************************
+/* Header Start
+*********************************/
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: $white;
+    @include respond(tabland) {
+        border-bottom: 1px solid #f2f4f7;
+        // overflow: hidden;
+    }
+    &__top {
+        @include flexbox($a: center, $jc: space-between);
+        flex-wrap: nowrap;
+        padding: 18px 0;
+
+        @include respond(tabland) {
+            padding: 10px 5px 10px 0;
+            border-bottom: 1px solid $border;
+        }
+    }
+    &__left {
+        @include flexbox($a: center, $jc: space-between);
+        flex-wrap: nowrap;
+    }
+    &__wrapper {
+        @include flexbox($a: center, $jc: space-between);
+    }
+    .nav {
+        background-color: $white;
+        padding: 0px;
+        margin: 0 auto;
+        border-bottom: 1px solid #f2f4f7;
+        border-top: 1px solid #f2f4f7;
+
+        @include respond(tabland) {
+            padding: 14px 0px;
+        }
+    }
+    &__logo a {
+        img {
+            width: auto;
+            height: auto;
+            display: block;
+
+            @include respond(phone-xm) {
+                max-width: 125px;
+            }
+        }
+    }
+    &__menu {
+        .main__menu {
+            @include flexbox($a: center, $jc: inherit);
+            li {
+                position: relative;
+                list-style: none;
+
+                a {
+                    font-family: $default;
+                    font-size: 16px;
+                    font-weight: $medium;
+                    color: $content2;
+                    display: inline-block;
+                    margin-right: 40px;
+                    line-height: 48px;
+                    padding: 0;
+                    text-transform: capitalize;
+                    transition: $transition;
+                    position: relative;
+
+                    @include respond (medium) {
+                        margin-right: 25px;
+                    }
+                }
+                &:hover,
+                &.active {
+                    a {
+                        color: $primary;
+                        &::after {
+                            color: $primary !important;
+                        }
+                    }
+                }
+                &:last-child a {
+                    margin-right: 0;
+                }
+
+                &.has__dropdown {
+                    a {
+                        position: relative;
+
+                        &::after {
+                            content: "\f078";
+                            font-family: "Font Awesome 5 Free";
+                            font-weight: 900;
+                            font-size: 12px;
+                            color: $content2;
+                            margin-left: 13px;
+                            transition: all 0.3s linear;
+                            // display: none;
+                        }
+                    }
+                }
+                
+                .sub__menu {
+                    position: absolute;
+                    left: 0;
+                    top: 110%;
+                    width: 220px;
+                    background: $white;
+                    box-shadow: 0 2px 29px rgba(0, 0, 0, 0.05);
+                    // padding: 20px 0;
+                    border-radius: 5px;
+                    border-top: 3px solid $primary;
+                    opacity: 0;
+                    z-index: 99;
+                    visibility: hidden;
+                    transition: all 0.3s linear;
+
+                    // &:last-of-type {
+                    //     right: 0;
+                    //     left: auto;
+                    // }
+
+                    li {
+                        a {
+                            padding: 10px 25px;
+                            font-size: 14px;
+                            line-height: 20px;
+                            font-family: $default;
+                            font-weight: $medium;
+                            color: $content2;
+                            border-bottom: 1px dashed #d9d9d9;
+                            width: 100%;
+                            display: block;
+                            position: relative;
+                            z-index: 1;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                left: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background: $primary;
+                                width: 10px;
+                                height: 2px;
+                                opacity: 0;
+                                visibility: hidden;
+                                transition: all 0.3s linear;
+                            }
+
+                            &::after {
+                                display: none;
+                            }
+                            &:hover,
+                            &.active {
+                                color: $primary;
+                                padding-left: 35px;
+
+                                &::before {
+                                    opacity: 1;
+                                    visibility: visible;
+                                    left: 15px;
+                                }
+                            }
+                        }
+                        &:last-child a {
+                            border: none;
+                        }
+                    }
+                }
+                &:hover {
+                    .sub__menu {
+                        opacity: 1;
+                        visibility: visible;
+                        top: 100%;
+                    }
+                }
+                .mega__menu {
+                    background-color: #ffffff;
+                    width: 100%;
+                    margin: auto;
+                    padding: 15px 0;
+                    z-index: 999;
+                    max-width: 1320px;
+                    left: 50% !important;
+                    transform: translateX(-50%);
+                    box-shadow: 0 2px 29px rgba(0, 0, 0, 0.05);
+
+                    &-item {
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        max-width: 1320px;
+                        margin: auto;
+                    }
+
+                    .sub-mega__menu {
+                        flex-basis: 20%;
+                        .menu__title {
+                            font-family: $default;
+                            font-size: 18px;
+                            font-weight: $medium;
+                            line-height: 28px;
+                            color: $heading;
+                            margin-bottom: 5px;
+                            border: none;
+
+                            &::before {
+                                display: none;
+                            }
+                            &:hover {
+                                padding-left: 25px;
+                            }
+                        }
+                        ul {
+                            li {
+                                a {
+                                    // padding: 0;
+                                    border: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__meta {
+        @include flexbox($a: center, $jc: inherit);
+        flex-wrap: nowrap;
+        margin-left: 15px;
+        @include respond(tabport) {
+            align-items: flex-end;
+            margin-left: 0;
+        }
+        .meta__item {
+            @include flexbox($a: center, $jc: inherit);
+            list-style: none;
+            margin-right: 28px;
+
+            @include respond(xl) {
+                margin-right: 15px;
+            }
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+
+            li {
+                font-family: $default;
+                font-size: 16px;
+                font-weight: $medium;
+                line-height: 24px;
+                color: $content2;
+                margin-right: 28px;
+
+                @include respond(tabport) {
+                    // font-size: 18px;
+                }
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+                i {
+                    margin-right: 8px;
+
+                    @include respond(tabport) {
+                        margin-right: 0 !important;
+                    }
+                }
+
+                a {
+                    color: $content2;
+                    display: block;
+                    text-decoration: none;
+                    transition: $transition;
+
+                    i {
+                        margin-right: 8px;
+                    }
+                    &:hover {
+                        color: $primary;
+                    }
+                    span {
+                        @include respond(tabport) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.nav-bg {
+    background: $white;
+    box-shadow: 0 22px 20px rgba(0, 0, 0, 0.05);
+    transition: $transition;
+}
+
+/*********************************
+/* Avatar Dropdown Start 
+*********************************/
+.avatar__dropdown {
+    position: relative;
+    display: inline-block;
+
+    .avatar__profile {
+        height: 44px;
+        width: 44px;
+        border-radius: $radius;
+        position: relative;
+        display: block;
+
+        img {
+            height: 100%;
+            width: 100%;
+            display: block;
+            border-radius: $radius;
+        }
+
+        @include respond(tabport) {
+            height: 25px;
+            width: 25px;
+        }
+    }
+
+    .list {
+        position: absolute;
+        list-style: none;
+        position: absolute;
+        left: 50%;
+        top: 150%;
+        transform: translateX(-50%);
+        padding: 0px;
+        min-width: 216px;
+        max-height: 290px;
+        background: $white;
+        border-radius: $radius;
+        border-top: 3px solid $primary;
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: $transition;
+        box-shadow: -24px 24px 72px 17px rgba(145, 158, 171, 0.24);
+        @include respond(tabport) {
+            min-width: 180px;
+        }
+        @include respond(tabport) {
+            left: auto;
+            right: 0;
+            transform: translateX(0);
+        }
+
+        li {
+            font-family: $default;
+            font-size: 16px;
+            font-weight: $medium;
+            color: $content2;
+            line-height: 24px;
+            border: none;
+            outline: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-transform: capitalize;
+            position: relative;
+            margin-right: 0;
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: $radius;
+            cursor: pointer;
+            transition: $transition;
+
+            @include respond(tabport) {
+                font-size: 15px;
+                padding: 8px 16px;
+            }
+
+            a {
+                color: $content2;
+                display: block;
+                transition: $transition;
+
+                i {
+                    font-size: 16px;
+                    margin-right: 5px;
+                    display: inline-block;
+                }
+            }
+
+            &.active,
+            &:hover {
+                a {
+                    color: $primary;
+                }
+                background: rgba($primary, 0.1);
+            }
+        }
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            top: 120%;
+        }
+    }
+    &--v2 {
+        .avatar__profile {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+
+            img {
+                border-radius: 50%;
+            }
+        }
+        .list {
+            border-top: none;
+            min-width: 180px;
+            left: auto;
+            right: 0;
+            transform: translateX(0);
+
+            li {
+                font-size: 14px;
+                line-height: 24px;
+                letter-spacing: 0.10000000149011612px;
+            }
+        }
+    }
+}
+
+/*********************************
+/* Custom Dropdown Start 
+*********************************/
+.custom__dropdown {
+    position: relative;
+
+    .selected {
+        display: flex;
+        align-items: center;
+
+        .title {
+            font-family: Inter;
+            font-size: 16px;
+            font-weight: $medium;
+            line-height: 24px;
+            color: $content3;
+            text-transform: capitalize;
+            margin-right: 5px;
+        }
+    }
+    &__v2 {
+        margin-right: 25px;
+
+        .selected_item {
+            @include respond(phone-sm) {
+                font-size: 14px !important;
+            }
+        }
+        .list {
+            @include respond(phone) {
+                min-width: 150px !important;
+                padding: 0 10px !important;
+                width: auto !important;
+                li {
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+    &.language__select {
+        margin-right: 28px;
+        width: 140px;
+
+        @include respond(xl) {
+            margin-right: 15px;
+        }
+        @include respond(tabport) {
+            margin-right: 12px;
+            width: 100%;
+        }
+        .selected_item {
+            min-width: 100%;
+        }
+        .list {
+            @include respond(tabport) {
+                left: auto;
+                right: 0;
+            }
+            &.active {
+                opacity: 1;
+                visibility: visible;
+                top: 120%;
+            }
+        }
+    }
+    .selected_item {
+        font-family: $default;
+        font-size: 16px;
+        font-weight: $medium;
+        color: $content2;
+        line-height: 24px;
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        min-width: 78px;
+        cursor: pointer;
+        text-transform: capitalize;
+        background: transparent;
+        position: relative;
+
+        img {
+            width: 24px;
+            height: 18px;
+            display: block;
+            margin-right: 8px;
+        }
+        &-v2 {
+            min-width: inherit;
+            height: 40px;
+            border: 0;
+            margin-right: 24px;
+            @include flexbox($a: center, $jc: flex-start);
+            color: $content3;
+            font-weight: $regular;
+            line-height: 24px;
+            &::after {
+                @include pseudo;
+                content: "\f078";
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                font-size: 12px;
+                left: auto;
+                right: -18px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    .list {
+        position: absolute;
+        list-style: none;
+        position: absolute;
+        left: 0;
+        top: 150%;
+        padding: 0px 15px;
+        min-width: 175px;
+        background: $white;
+        border-radius: $radius;
+        border-top: 3px solid $primary;
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: $transition;
+        box-shadow: -24px 24px 72px 17px rgba(145, 158, 171, 0.24);
+        max-height: 280px;
+        overflow: auto;
+        // display: none;
+
+        li {
+            @extend .selected_item;
+            padding: 13px 0;
+            cursor: pointer;
+            transition: $transition;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            top: 120%;
+        }
+        &__v2 {
+            width: 180px;
+            li {
+                padding: 10px 0;
+            }
+        }
+    }
+}
+
+/*********************************
+/* Search Form Start 
+*********************************/
+.search__form__wrapper {
+    flex: 1;
+    margin-left: 30px;
+
+    @include respond(xl) {
+        margin-left: 10px;
+    }
+    @include respond(tabland) {
+        display: none;
+    }
+    .search__form {
+        @include respond(xl) {
+            max-width: 370px !important;
+        }
+    }
+}
+.search__form {
+    @include flexbox($a: center, $jc: inherit);
+    flex-wrap: nowrap;
+    border: 1px solid $border;
+    max-width: 500px;
+    background-color: #f9fafb;
+    height: 44px;
+    border-radius: $radius;
+    position: relative;
+    width: 100%;
+
+    .form-control {
+        font-family: $default;
+        font-size: 16px;
+        font-weight: $regular;
+        line-height: 19px;
+        color: #8b8b8b;
+        border: none;
+        outline: none;
+        padding: 11px 15px;
+        background: transparent;
+        flex: 1;
+
+        &:focus {
+            border: none;
+            box-shadow: none;
+        }
+    }
+    button {
+        border: 0;
+        padding: 0;
+        outline: none;
+        font-size: 16px;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        color: $content2;
+        background: transparent;
+        height: 100%;
+        width: 54px;
+        @include flexbox($a: center, $jc: center);
+        border-left: 1px solid $border;
+
+        img {
+            width: auto;
+            height: auto;
+        }
+    }
+    &__v2 {
+        background: transparent;
+        max-width: 100%;
+        width: 100%;
+    }
+    &.full__width {
+        max-width: 100%;
+        margin: 6px 0px;
+    }
+    &--v2 {
+        box-shadow: 0px 1px 2px 0px #1018280d;
+        background: transparent;
+        max-width: 230px;
+
+        @include respond(phone-sm) {
+            max-width: 100%;
+        }
+        .form-control {
+            padding-left: 44px;
+            color: $content2;
+        }
+        button {
+            position: absolute;
+            left: 16px;
+            width: 20px;
+            height: 20px;
+            border: none;
+            top: 50%;
+            transform: translateY(-50%);
+
+            img {
+                width: 20px;
+            }
+        }
+    }
+    &.v3 {
+        max-width: 400px;
+    }
+}
+/*********************************
+/* Search Form Start 
+*********************************/
+
+/*********************************
+/* Nice Select Start 
+*********************************/
+.select__style {
+    .nice-select {
+        border: none;
+        font-size: inherit;
+        line-height: inherit;
+        height: inherit;
+        background: transparent;
+        width: 130px;
+        padding: 10px 30px 10px 15px;
+        border-right: 1px solid $border;
+        &::after {
+            height: 8px;
+            width: 8px;
+        }
+        .option {
+            min-height: inherit;
+            padding: 7px 15px;
+
+            &:hover,
+            &.selected.focus {
+                background: rgba($primary, 0.1);
+                color: $heading;
+            }
+        }
+        .current {
+            font-family: $default;
+            font-size: 16px;
+            font-weight: $medium;
+            line-height: 24px;
+            color: $content2;
+        }
+        .list {
+            width: 100%;
+            max-height: 250px;
+            overflow: auto;
+            box-shadow: -24px 24px 72px 17px rgba(145, 158, 171, 0.24);
+            li {
+                @extend .current;
+            }
+        }
+    }
+}
+
+/*********************************
+/* Nice Select End 
+*********************************/
+
+/*********************************
+/* Header Toggle Start 
+*********************************/
+.header__toggle {
+    margin-right: 15px;
+    @include respond(phone) {
+        margin-right: 0;
+    }
+
+    .toggler__btn {
+        cursor: pointer;
+        border: 0;
+        padding: 0;
+        outline: none;
+        font-size: 24px;
+        border: none;
+        padding: 0;
+        color: $heading;
+        height: 40px;
+        width: 40px;
+        background: transparent;
+        border-radius: 4px;
+        @include flexbox($a: center, $jc: center);
+
+        @include respond(phone-xm) {
+            height: 35px;
+            width: 35px;
+        }
+
+        svg {
+            width: auto;
+            height: 18px;
+
+            @include respond(phone-xm) {
+                height: 15px;
+            }
+        }
+
+        i {
+            pointer-events: none;
+        }
+    }
+}
+
+/*********************************
+/* Header Toggle End 
+*********************************/
+
+/*********************************
+/* Category Filter Start
+*********************************/
+.category__filter {
+    position: relative;
+    // padding: 10px 0;
+    padding-top: 10px;
+    top: 1px;
+    .category {
+        &__title {
+            font-family: $default;
+            font-size: 16px;
+            color: $white;
+            cursor: pointer;
+            position: relative;
+            border-radius: 10px 10px 0 0;
+            display: inline-block;
+            padding: 12px 50px 12px 30px;
+            background-color: $primary;
+            text-transform: capitalize;
+
+            @include respond (medium) {
+                font-size: 14px;
+                padding: 8px 35px 8px 15px;
+                border-radius: 6px;
+            }
+
+            &::before {
+                top: 14px;
+                right: 25px;
+                font-size: 14px;
+                content: "\f078";
+                font-weight: 900;
+                position: absolute;
+                font-family: "Font Awesome 5 Free";
+
+                @include respond (medium) {
+                    right: 15px;
+                    top: 10px;
+                    font-size: 12px;
+                }
+            }
+            i {
+                margin-right: 10px;
+
+                @include respond (medium) {
+                    margin-right: 8px;
+                }
+            }
+        }
+        &__dropdown {
+            padding: 10px 0;
+            box-shadow: 0 18px 43px rgba(90, 90, 90, 0.14);
+            min-width: 250px;
+            position: absolute;
+            background: #fff;
+            // padding: 22px 0;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            min-width: 270px;
+            z-index: 99;
+            visibility: hidden;
+            opacity: 0;
+            border-radius: 0px 0px 6px 6px;
+            transform: scaleY(0);
+            transform-origin: 0 0 0;
+            transition: $transition;
+
+            &.active {
+                visibility: visible;
+                opacity: 1;
+                transform: scaleY(1);
+            }
+
+            li {
+                font-family: $default;
+                font-size: 16px;
+                line-height: 42px;
+                color: $heading;
+                display: flex;
+                padding: 0 26px;
+                font-weight: 500;
+                align-items: center;
+                border-bottom: 1px solid #f2f2f2;
+
+                &:last-of-type {
+                    border: none;
+                }
+
+                a {
+                    color: currentColor;
+                    display: block;
+                    transition: $transition;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}
+/*********************************
+/* Category Filter End
+*********************************/
+
+/*********************************
+/* MiniCart Start 
+*********************************/
+.miniCart {
+    .header__cart {
+        margin-left: 18px;
+        @include respond(tabport) {
+            margin-left: 12px;
+        }
+        .cart__btn {
+            font-family: $default;
+            font-size: 16px;
+            font-weight: $medium;
+            line-height: 24px;
+            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 112px;
+            height: 44px;
+            background: $primary;
+            border-radius: $radius;
+            text-transform: capitalize;
+            position: relative;
+
+            @include respond(tabport) {
+                color: $content2;
+                width: inherit;
+                height: auto;
+                background: transparent;
+                font-size: 13px;
+                font-weight: $semibold;
+            }
+
+            &-img {
+                position: relative;
+                margin-right: 9px;
+                @include respond(tabport) {
+                    margin-right: 0;
+                }
+                img {
+                    width: 31px;
+                    height: auto;
+                    display: block;
+
+                    @media (min-width: 768px) {
+                        filter: brightness(0) invert(1);
+                    }
+                    @include respond(tabport) {
+                        width: 26px;
+                    }
+                }
+                .value {
+                    position: absolute;
+                    line-height: 8px;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+            .title {
+                @include respond(tabport) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.flyoutCart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+
+        .flyout__flip {
+            right: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .flyout {
+        &__flip {
+            @include flexbox($a: inherit, $jc: space-between);
+            flex-direction: column;
+            flex-wrap: nowrap;
+            position: absolute;
+            top: 0;
+            right: -200px;
+            background: $white;
+            width: 480px;
+            height: 100%;
+            box-shadow: 0px 14px 40px 0px #73737326;
+            padding: 40px;
+            z-index: 99999;
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+
+            @include respond(phone) {
+                width: 420px;
+                padding: 40px 30px;
+            }
+            @include respond(phone-sm) {
+                width: 370px;
+                padding: 30px 15px 50px;
+            }
+            @include respond(phone-xm) {
+                width: 315px;
+                padding: 30px 10px 100px;
+            }
+        }
+        &__inner {
+            height: calc(100% - 100px);
+            .cart__header-top {
+                @include flexbox($a: center, $jc: space-between);
+                margin-bottom: 30px;
+
+                .close__btn {
+                    cursor: pointer;
+                    width: auto;
+                }
+            }
+            .main__title {
+                font-family: $default;
+                font-size: 24px;
+                font-weight: $bold;
+                line-height: 32px;
+                color: $heading3;
+            }
+            .cart__title {
+                background: #f2f4f7;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: $radius;
+                @include flexbox($a: center, $jc: space-between);
+                h3 {
+                    //styleName: Text md/Bold;
+                    font-family: $default;
+                    font-size: 16px;
+                    font-weight: $bold;
+                    line-height: 24px;
+                    color: $heading3;
+                    margin-bottom: 0;
+                }
+            }
+            .cart__items {
+                // max-height: 550px;
+                height: calc(100% - 230px);
+                overflow: auto;
+                padding-right: 10px;
+            }
+            .cart {
+                &__subtotal {
+                    list-style: none;
+                    border-top: 1px solid #d0d5dd;
+                    border-bottom: 1px solid #d0d5dd;
+                    padding: 15px 0;
+
+                    li {
+                        @include flexbox($a: center, $jc: space-between);
+                        margin-bottom: 8px;
+
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+
+                        span {
+                            //styleName: Text sm/Semibold;
+                            font-family: $default;
+                            font-size: 14px;
+                            font-weight: $semibold;
+                            line-height: 20px;
+                            color: $content2;
+                        }
+                    }
+                }
+                &__total {
+                    padding-top: 15px;
+                    @include flexbox($a: center, $jc: space-between);
+                    h3 {
+                        font-family: $default;
+                        font-size: 18px;
+                        font-weight: $bold;
+                        line-height: 28px;
+                        color: $heading3;
+                        margin-bottom: 0;
+
+                        span {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                    .total {
+                        font-size: 18px;
+                        font-weight: $bold;
+                        line-height: 28px;
+                        color: $heading3;
+                    }
+                }
+            }
+        }
+    }
+    .cart__btns {
+        @include flexbox($a: center, $jc: space-between);
+        width: 100%;
+        margin-top: 30px;
+
+        @include respond(phone-sm) {
+            display: block;
+        }
+
+        .btn {
+            flex-basis: calc(50% - 10px);
+            height: 44px;
+            padding: 10px 20px;
+            border-radius: $radius;
+
+            @include respond(phone-sm) {
+                font-size: 14px;
+                flex-basis: 100%;
+                width: 100%;
+                margin-right: 10px;
+
+                &:last-of-type {
+                    margin-right: 0;
+                    margin-top: 10px;
+                }
+            }
+
+            &-outline {
+                color: $content2;
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.shopping-card {
+    @include flexbox($jc: inherit);
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+
+    &__image {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        background: $bg;
+        border-radius: 10px;
+        @include flexbox($a: center, $jc: center);
+        margin-right: 14px;
+
+        @include respond(phone-sm) {
+            margin-right: 10px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            max-width: 80%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            border-radius: 10px;
+            transition: $transition;
+        }
+    }
+    &__content {
+        flex: 1;
+        &-top {
+            @include flexbox($a: baseline, $jc: space-between);
+            flex-wrap: nowrap;
+            .product__title {
+                font-family: $default;
+                font-size: 14px;
+                font-weight: $regular;
+                line-height: 18px;
+                color: $heading2;
+                margin-bottom: 6px;
+                max-width: 210px;
+                @include respond(phone-sm) {
+                    font-size: 13px;
+                }
+                a {
+                    color: $heading2;
+                    transition: $transition;
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+            .product__price {
+                //styleName: Text sm/Semibold;
+                font-family: $default;
+                font-size: 14px;
+                font-weight: $semibold;
+                line-height: 20px;
+                color: $heading2;
+                margin-bottom: 0;
+                max-width: 70px;
+
+                @include respond(phone-sm) {
+                    font-size: 13px;
+                }
+            }
+        }
+        &-bottom {
+            @include flexbox($a: center, $jc: space-between);
+            .quantity {
+                &__wrapper {
+                    display: flex;
+                    align-items: center;
+                }
+                width: 77px;
+                height: 28px;
+                border-radius: 6px;
+                padding: 4px 6px;
+                background: transparent;
+                border: 1px solid #d0d5dd;
+
+                button {
+                    .bar {
+                        background: $content2;
+                        width: 10px;
+
+                        &::before {
+                            background: $content2;
+                            height: 10px;
+                            right: 4px;
+                        }
+                    }
+                }
+                .qnttinput {
+                    color: $content2;
+                    font-size: 14px;
+                    @include respond(phone-sm) {
+                        font-size: 13px;
+                    }
+                }
+            }
+            .stock__item {
+                margin-left: 10px;
+                @include respond(phone-sm) {
+                    font-size: 13px;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+    .action__btn {
+        font-family: $default;
+        font-size: 14px;
+        font-weight: $medium;
+        line-height: 17px;
+        color: $content2;
+        display: flex;
+        align-items: center;
+        border: none;
+        outline: none;
+        width: auto;
+        background: transparent;
+        cursor: pointer;
+
+        span {
+            @include respond(phone-xm) {
+                display: none;
+            }
+        }
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        svg {
+            width: 16px;
+            height: auto;
+            margin-right: 6px;
+        }
+        &:hover {
+            color: $primary;
+
+            svg path {
+                stroke: $primary;
+            }
+        }
+    }
+    &__v2 {
+        align-items: center;
+        .shopping-card {
+            &__image {
+                height: 60px;
+                width: 60px;
+            }
+            &__content {
+                &-top {
+                    align-items: center;
+
+                    .product__title {
+                        max-width: 84%;
+                        line-height: 20px;
+                        color: $content2;
+                    }
+                }
+                .qty {
+                    color: $content2;
+                }
+            }
+        }
+    }
+}
+
+.stock__item {
+    font-size: 14px;
+    font-weight: $semibold;
+    line-height: 14px;
+    color: $green;
+}
+
+/*********************************
+/* MiniCart End 
+*********************************/
+
+/*********************************
+/* FlyOut Menu Start
+*********************************/
+.flyoutMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+
+        .flyout__flip {
+            left: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .flyout {
+        &__flip {
+            @include flexbox($a: inherit, $jc: space-between);
+            flex-direction: column;
+            flex-wrap: nowrap;
+            position: absolute;
+            top: 0;
+            left: -200px;
+            // right: 0;
+            background: $white;
+            width: 360px;
+            height: 100%;
+            box-shadow: 0px 14px 40px 0px #73737326;
+            padding: 0px 25px;
+            z-index: 99999;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+
+            @include respond(phone-sm) {
+                width: 370px;
+            }
+            @include respond(phone-xm) {
+                width: 310px;
+            }
+        }
+        &__inner {
+            .menu__header-top {
+                @include flexbox($a: center, $jc: space-between);
+                // margin-bottom: 30px;
+                padding: 15px 0 9px;
+
+                .closest__btn {
+                    cursor: pointer;
+                    width: auto;
+                }
+            }
+        }
+        &-main__menu {
+            margin-top: 16px;
+            li {
+                position: relative;
+                list-style: none;
+                padding: 10px 0;
+                // margin-bottom: 12px;
+                border-bottom: 1px solid $border;
+
+                a {
+                    font-family: $default;
+                    font-size: 14px;
+                    font-weight: $medium;
+                    color: $content2;
+                    display: block;
+                    line-height: 24px;
+                    padding: 0px 0;
+                    text-transform: capitalize;
+                    transition: $transition;
+                    position: relative;
+                    &:hover,
+                    &.active {
+                        color: $primary;
+                        &::after {
+                            color: $primary !important;
+                        }
+                    }
+                }
+                &:last-child a {
+                    margin-right: 0;
+                }
+
+                &.has__dropdown {
+                    a {
+                        position: relative;
+
+                        &::after {
+                            content: "\f078";
+                            font-family: "Font Awesome 5 Free";
+                            font-weight: 900;
+                            font-size: 11px;
+                            color: $content2;
+                            transition: all 0.3s linear;
+                            position: absolute;
+                            right: 0;
+                            // height: 100%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+                .sub__menu {
+                    position: relative;
+                    background: $white;
+                    z-index: 99;
+                    padding-left: 16px;
+                    margin-top: 8px;
+                    display: none;
+                    // opacity: 0;
+                    // visibility: hidden;
+                    // transition: $transition;
+
+                    li {
+                        // margin-bottom: 10px;
+                        padding: 0;
+                        border: none;
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+                        .title {
+                            font-family: $default;
+                            font-size: 14px;
+                            font-weight: $medium;
+                            color: $content2;
+                            display: block;
+                            line-height: 24px;
+                            // padding: 4px 0;
+                            text-transform: capitalize;
+                            transition: $transition;
+                            position: relative;
+                            &::before {
+                                display: none;
+                            }
+                            &::after {
+                                display: block;
+                            }
+                        }
+                        a {
+                            padding: 7px 0;
+                            font-size: 14px;
+                            line-height: 20px;
+                            font-family: $default;
+                            font-weight: $medium;
+                            color: $content2;
+                            // border-bottom: 1px dashed #d9d9d9;
+                            width: 100%;
+                            display: block;
+                            position: relative;
+                            z-index: 1;
+                            &::after {
+                                display: none;
+                            }
+                            &:hover,
+                            &.active {
+                                color: $primary;
+                            }
+                        }
+                        &:last-child a {
+                            border: none;
+                        }
+                    }
+                }
+                .sub__sub-menu {
+                    padding-left: 16px;
+                    display: none;
+                    // margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+/*********************************
+/* FlyOut Menu End
+*********************************/
