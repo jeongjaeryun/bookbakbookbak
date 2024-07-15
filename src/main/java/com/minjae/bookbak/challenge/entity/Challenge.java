@@ -1,10 +1,9 @@
 package com.minjae.bookbak.challenge.entity;
 
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,6 +13,6 @@ public class Challenge {
     private String challengePeriod;
     private int challengeTarget;
     private String challengeStatus;
-    private Date challengeStart;
-    private Date challengeEnd;
+    private LocalDateTime challengeStart;
+    private LocalDateTime challengeEnd;
 }
