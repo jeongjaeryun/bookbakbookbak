@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     @GetMapping("/")
     public String bookRecord(){
-        return "record/record.html";
+        return "home/index.html";
     }
 }

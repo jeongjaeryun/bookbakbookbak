@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+</head>
+<body>
+<th:block th:fragment="headerFragment">
+    <header class="header" style="margin-top: .5rem">
+        <a class="header--logo" href="/" style="width: auto; height: 47px;">
+            <img src="/home/images/logo.png" alt="logo" style="height: 100%;">
+            <!-- 				<img src="/img/logo.png" alt="Global">
+                            <h3 style="margin: 0 0 0 1rem; font-weight: 800; font-size: 1.75rem; font-family: 'Pretendard'">
+                                티격태격
+                            </h3> -->
+        </a>
+
+        <a href="/" style="color:black; font-size: large;">
+            독서기록
+        </a>
+
+        <a href="/" style="color:black; font-size: large;">
+            독서 찾기
+        </a>
+
+        <a href="/" style="color:black; font-size: large;">
+            챌린지
+        </a>
+
+        <!-- 로그인 X -->
+        <th:block sec:authorize="isAnonymous()">
+            <a class="header-user" href="/login">
+                <!-- <i class="fa-regular fa-user fa-2x" id="icon-user"></i> -->
+                <!-- <i class="fa-regular fa-circle-user" id="icon-user"></i> -->
+                <img src="/member/images/login.png">
+            </a>
+        </th:block>
+
+        <!-- 로그인 O -->
+        <th:block sec:authorize="isAuthenticated()">
+            <div>
+                <a class="header-user" href="/logout">
+                    <!-- <i class="fa-solid fa-right-to-bracket" id="icon-logout"></i>	 -->
+                    <img src="/member/images/logout.png">
+                </a>
+
+                <a class="header-user" href="/mypage" style="margin-left: 2rem">
+                    <!-- <i class="fa-regular fa-user fa-2x" id="icon-user"></i> -->
+                    <!-- <i class="fa-regular fa-circle-user" id="icon-user"></i> -->
+                    <img src="/member/images/mypage.png">
+                </a>
+            </div>
+
+        </th:block>
+    </header>
+</th:block>
+</body>
+</html>

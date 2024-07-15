@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout/layout}">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style type="text/css">
+        body {
+            font-family: "Pretendard" !important;
+        }
+
+        .mainHome {
+            text-align: center;
+        }
+
+        .about {
+            margin-top: 1rem;
+        }
+
+        #rankMain {
+            padding: 5rem 0;
+             counter-reset: list;
+             display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #outline {
+            width: 90%;
+              max-width: 750px;
+              padding: 2.25rem 3rem;
+              border-radius: 2rem;
+        }
+
+        .leaderboard {
+          margin: 0 auto;
+          /* color: #000; */
+          background: #20222a;
+          border-radius: 1.5rem;
+          padding: .8rem 0 1.6rem 0;
+          /* box-shadow: 0 0.5rem 1rem #5b5be638; */
+          position: relative;
+        }
+
+        .icon-tabler-share {
+          position: absolute;
+          right: 2rem;
+          top: 2rem;
+          background: #fc5c75;
+          color: #fff;
+          cursor: pointer;
+          padding: 0.3rem 0.6rem;
+          width: 45px;
+          height: 30px;
+          border-radius: 1rem;
+        }
+
+        .leaderboard h2 {
+          /* margin-left: 2rem; */
+          margin: 0;
+          letter-spacing: .25rem;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: 800;
+        }
+
+        #rank {
+          padding: 0;
+          margin-top: 1.25rem;
+        }
+
+        #rank li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: .7rem 3rem;
+          font-weight: 700;
+          opacity: .8;
+        }
+
+        #rank li::before {
+          counter-increment: list;
+          content: counter(list);
+          font-size: x-large;
+        }
+
+        .name {
+          margin: 0 auto 0 3rem;
+          font-size: large;
+        }
+
+        .score {
+          font-weight: 700;
+          margin: 1rem 0;
+        }
+
+        strong {
+          font-size: large;
+          font-weight: 900;
+        }
+
+        #rank li:nth-of-type(odd) {
+          background: #1c1d22;
+        }
+
+        #rank li:first-of-type {
+          background: #5050d8;
+          opacity: 1;
+          color: #fff;
+          box-shadow: 0 0.2rem 0.5rem #79798e;
+          border-radius: 0;
+          padding: .7rem 2.5rem .7rem 3rem;
+          transform: scale(1.03);
+        }
+
+        .award {
+          display: flex;
+          align-items: center;
+          margin-left: 1rem;
+        }
+
+        #rank img {
+          width: 50px;
+          height: auto;
+        }
+
+        /* img motion */
+        .imgMotion {
+          animation-name: flo;
+          animation-duration: 5s;
+          animation-iteration-count: infinite;
+          position: relative;
+          bottom: 80px;
+          left:20px;
+        }
+
+        @keyframes flo{
+          50%{
+            transform: translateY(30px);
+          }
+        }
+
+        .img2Motion {
+          animation-name: flo2;
+          animation-duration: 7s;
+          animation-iteration-count: infinite;
+          position: relative;
+          bottom: 40px;
+          right:20px;
+        }
+
+        @keyframes flo2 {
+          25%{
+            transform: translate(-30px,-30px);
+          }
+          50%{
+              transform: translate(0px, 0px);
+          }
+          75%{
+            transform: translate(30px, -30px);
+          }
+        }
+
+        #subTitle {
+            --animate-delay: 0.6s;
+        }
+
+        #gameButton {
+            --animate-delay: 1.5s;
+        }
+
+        /* sweetAlert2 */
+        .swal2-modal {
+            background-color: #252526;
+            border-radius: 1.5rem;
+            box-shadow: 0 0 1rem black;
+        }
+        #swal2-title {
+            margin: 0;
+            font-weight: 700;
+            color: #fcfcfc;
+        }
+        .swal2-html-container {
+            color: #fcfcfc;
+        }
+        .swal2-cancel {
+            color: #3c3c3c !important;
+        }
+        .no-border {
+              border: 0;
+        }
+        .swal2-checkbox {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+<th:block layout:fragment="mainContent">
+    <div class="perspective effect-rotate-left">
+        <div class="container">
+            <div id="viewport" class="l-viewport">
+                <div class="l-wrapper">
+                    <nav class="l-side-nav">
+                        <ul class="side-nav">
+                            <li class="is-active">
+                                <span>Home</span>
+                            </li>
+                            <li>
+                                <span>About</span>
+                            </li>
+                            <li>
+                                <span>Rank</span>
+                            </li>
+                            <!-- <li>
+                              <span>Contact</span>
+                            </li> -->
+                            <li>
+                                <span>Contact</span>
+                            </li>
+                        </ul>
+                    </nav>
+                    <ul class="l-main-content main-content">
+
+                        <!-- 01. Main -->
+                        <li class="l-section section section--is-active">
+                            <div class="intro">
+                                <div class="intro--banner">
+                                    <!-- <h1>
+                                      Your next<br>interactive<br>experience
+                                    </h1>
+                                    <button class="cta" id="chatBtn" th:onclick="|location.href='@{/user/waitChatroom}?type=text'|">
+                                      CHAT
+                                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118"
+                                        style="enable-background: new 0 0 150 118;" xml:space="preserve">
+                                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                                          <path
+                                            d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
+                                        </g>
+                                      </svg>
+                                      <span class="btn-background"></span>
+                                    </button>
+                                    <button class="cta" id="chatBtn" th:onclick="|location.href='@{/user/waitChatroom}?type=voice'|">
+                                      VOICE
+                                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118"
+                                        style="enable-background: new 0 0 150 118;" xml:space="preserve">
+                                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                                          <path
+                                            d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
+                                        </g>
+                                      </svg>
+                                      <span class="btn-background"></span>
+                                    </button>
+                                    <img src="/img/introduction-visual.png" alt="Welcome"> -->
+
+
+                                    <div class="mainHome">
+                                        <h1 class="animate__animated animate__flipInX" style="margin-bottom: 0;">티격태격 시작하기</h1>
+                                        <h2 id="subTitle" class="animate__animated animate__delay-1s animate__fadeIn" style="font-size: xxx-large; color: #d2d3d4; margin: 0;">다양한 주제로 이야기하고, 싸우고, 즐기는</h2>
+                                        <p class="animate__animated animate__delay-1s animate__fadeIn">아래 버튼을 클릭하면 채팅 말싸움 & 음성 말싸움을 시작할 수 있어요</p>
+                                        <div style="margin-top: 6rem;">
+                                            <img src="/home/images/message.png" class="imgMotion" alt="message">
+                                            <div id="gameButton" class="animate__animated animate__delay-1s animate__fadeIn">
+                                                <button class="cta" id="chatBtn" th:onclick="|location.href='@{/user/waitChatroom}?type=text'|">
+                                                    CHAT
+                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118"
+                                                         style="enable-background: new 0 0 150 118;" xml:space="preserve">
+			                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+			                          <path
+                                              d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
+			                        </g>
+			                      </svg>
+                                                    <span class="btn-background"></span>
+                                                </button>
+                                                <button class="cta" id="chatBtn" th:onclick="|location.href='@{/user/waitChatroom}?type=voice'|" style="margin-left: 2rem;">
+                                                    VOICE
+                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118"
+                                                         style="enable-background: new 0 0 150 118;" xml:space="preserve">
+			                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+			                          <path
+                                              d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
+			                        </g>
+			                      </svg>
+                                                    <span class="btn-background"></span>
+                                                </button>
+                                            </div>
+                                            <img src="/home/images/voice.png" style="right: 3%;" class="img2Motion" alt="voice">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="intro--options">
+                                    <a href="#0">
+                                        <h3>문자 &amp; 채팅</h3>
+                                        <p>다 같이 문자 채팅하면서 말싸움해요.</p>
+                                    </a>
+                                    <a href="#0" style="visibility: hidden;">
+                                        <h3>Fantasy interactive</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                                    </a>
+                                    <a href="#0">
+                                        <h3>음성 &amp; 채팅</h3>
+                                        <p>음성으로 이야기하면서 말싸움해요.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- 02. About -->
+                        <li class="l-section section">
+                            <div class="work">
+                                <h2>재미있는 이야기로 티격태격해요</h2>
+                                <div class="work--lockup">
+                                    <ul class="slider">
+                                        <li class="slider--item slider--item-left">
+                                            <a href="#0">
+                                                <div class="slider--item-image">
+                                                    <img src="/home/images/chat.jpeg" alt="chat">
+                                                </div>
+                                                <p class="slider--item-title">채팅 티격태격</p>
+                                                <p class="slider--item-description">
+                                                    A팀, B팀, 관전자 모두 채팅으로 말싸움해요.<br>A팀과 B팀은 자신의 팀에 맞게 의견을 채팅으로 주장하고
+                                                    <br> 관전자는 두 팀의 말싸움을 보고 설득된 팀에 투표를 진행해요. </p>
+                                            </a>
+                                        </li>
+                                        <li class="slider--item slider--item-center">
+                                            <a href="#0">
+                                                <div class="slider--item-image">
+                                                    <img src="/home/images/fight.jpeg" alt="fight">
+                                                </div>
+                                                <p class="slider--item-title">티격태격이 뭔가요?</p>
+                                                <p class="slider--item-description">
+                                                    어떤 주제가 주어지면 랜덤으로 A팀, B팀, 관전자가 정해지고 <br> 채팅 또는 음성 채팅으로 말싸움하는 플랫폼이에요.
+                                                    <br> 최소 3명에서 최대 12명이 게임을 할 수 있어요.</p>
+                                            </a>
+                                        </li>
+                                        <li class="slider--item slider--item-right">
+                                            <a href="#0">
+                                                <div class="slider--item-image">
+                                                    <img src="/home/images/voice.jpeg" alt="voice">
+                                                </div>
+                                                <p class="slider--item-title">음성 티격태격</p>
+                                                <p class="slider--item-description">
+                                                    A팀, B팀 음성 채팅으로 말싸움해요.<br>A팀과 B팀은 자신의 팀에 맞게 의견을 음성으로 주장하고
+                                                    <br> 관전자는 자유롭게 채팅하며 이야기를 듣고 설득된 팀에 투표를 진행해요.</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="slider--prev">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118"
+                                             style="enable-background: new 0 0 150 118;" xml:space="preserve">
+                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                          <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
+                            c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
+                            c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z" />
+                        </g>
+                      </svg>
+                                    </div>
+                                    <div class="slider--next">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118"
+                                             style="enable-background: new 0 0 150 118;" xml:space="preserve">
+                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                          <path
+                                  d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
+                        </g>
+                      </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- 03. Rank -->
+                        <li class="l-section section">
+                            <div class="about">
+                                <div class="about--banner" id="rankMain">
+                                    <div id="outline" style="background-color: #1c1d22; width: 90%">
+                                        <section class="leaderboard">
+                                            <h2>티격태격 &nbsp;TOP. 5</h2>
+                                            <ol id="rank">
+                                                <!-- <li>
+                                                  <p class="name">Ricardo Franklin</p>
+                                                  <div class="award">
+                                                    <p class="score">258.244</p>
+                                                    <img src="member/mypage/images/medal/Gold.png" alt="award">
+                                                  </div>
+                                                </li> -->
+                                                <li th:each="memberWin : ${memberWin}">
+                                                    <p class="name">[[ ${memberWin.memberEmail} ]]</p>
+                                                    <p class="score"><strong>[[ ${memberWin.memberWin} ]]</strong> &nbsp; WIN</p>
+                                                </li>
+                                            </ol>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!--  <li class="l-section section">
+                           <div class="contact">
+                             <div class="contact--lockup">
+                               <div class="modal">
+                                 <div class="modal--information">
+                                   <p>Pawia 5, 31-154 Kraków, Poland</p>
+                                   <a href="mailto:ouremail@gmail.com">ouremail@gmail.com</a>
+                                   <a href="tel:+148126287560">+48 12 628 75 60</a>
+                                 </div>
+                                 <ul class="modal--options">
+                                   <li>
+                                     <a href="#0">Bēhance</a>
+                                   </li>
+                                   <li>
+                                     <a href="#0">dribbble</a>
+                                   </li>
+                                   <li>
+                                     <a href="mailto:ouremail@gmail.com">Contact Us</a>
+                                   </li>
+                                 </ul>
+                               </div>
+                             </div>
+                           </div>
+                         </li> -->
+
+                        <li class="l-section section">
+                            <div class="hire">
+                                <h2>티격태격에 문의가 필요하신가요?</h2>
+                                <!-- checkout formspree.io for easy form setup -->
+                                <form class="work-request" id="emailForm">
+                                    <div class="work-request--options">
+                      <span class="options-a">
+                        <input id="opt-1" name="checkBox" type="checkbox" value="01">
+                        <label for="opt-1">
+                          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 111"
+                               style="enable-background: new 0 0 150 111;" xml:space="preserve">
+                            <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
+                              <path
+                                      d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z" />
+                            </g>
+                          </svg>
+                          서비스 문의
+                        </label>
+                        <input id="opt-2" name="checkBox" type="checkbox" value="02">
+                        <label for="opt-2">
+                          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 111"
+                               style="enable-background: new 0 0 150 111;" xml:space="preserve">
+                            <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
+                              <path
+                                      d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z" />
+                            </g>
+                          </svg>
+                          회원 문의
+                        </label>
+                        <input id="opt-3" name="checkBox" type="checkbox" value="03">
+                        <label for="opt-3">
+                          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 111"
+                               style="enable-background: new 0 0 150 111;" xml:space="preserve">
+                            <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
+                              <path
+                                      d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z" />
+                            </g>
+                          </svg>
+                          말싸움 문의
+                        </label>
+                      </span>
+                                        <span class="options-b">
+                        <input id="opt-4" name="checkBox" type="checkbox" value="04">
+                        <label for="opt-4">
+                          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 111"
+                               style="enable-background: new 0 0 150 111;" xml:space="preserve">
+                            <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
+                              <path
+                                      d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z" />
+                            </g>
+                          </svg>
+                          주제 문의
+                        </label>
+                        <input id="opt-5" name="checkBox" type="checkbox" value="05">
+                        <label for="opt-5">
+                          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 111"
+                               style="enable-background: new 0 0 150 111;" xml:space="preserve">
+                            <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
+                              <path
+                                      d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z" />
+                            </g>
+                          </svg>
+                          기타 문의
+                        </label>
+                                            <!--  <input id="opt-6" type="checkbox" value="06">
+                                             <label for="opt-6">
+                                               <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 111"
+                                                 style="enable-background: new 0 0 150 111;" xml:space="preserve">
+                                                 <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
+                                                   <path
+                                                     d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z" />
+                                                 </g>
+                                               </svg>
+                                               기타 문의
+                                             </label> -->
+                      </span>
+                                    </div>
+                                    <div class="work-request--information">
+                                        <div class="information-name">
+                                            <input id="name" type="text" name="emailName" spellcheck="false">
+                                            <label for="name">Name</label>
+                                        </div>
+                                        <div class="information-email">
+                                            <input id="email" type="email" name="emailEmail" spellcheck="false">
+                                            <label for="email">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="work-request--information" style="margin-bottom: 60px;">
+                                        <div class="information-name" style="width: 100%;">
+                                            <input id="Content" type="text" name="emailContent" spellcheck="false">
+                                            <label for="Content">Content</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="emailButton">티격태격에 보내기
+                                        <img src="member/mypage/images/mbti/ENFP.png" style="height: 30px; vertical-align: middle;">
+                                    </button>
+                                </form>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="/js/vendor/jquery-2.2.4.min.js"><\/script>')
+    </script>
+    <script src="/js/functions-min.js"></script>
+    <script th:src="@{/user/js/index.js}"></script>
+    <script type="text/javascript">
+
+        // RANK 1등 메달 이미지 추가
+           let li = document.querySelector('#rank li:nth-child(1)');
+        const temp = document.createElement('div');
+        temp.classList.add('award');
+        temp.innerHTML = `<img src="member/mypage/images/medal/Gold.png" alt="award">`;
+        li.append(temp);
+
+        // RANK 이메일 * 처리
+        document.querySelectorAll('.name').forEach( (el) => {
+            //console.log(el);
+            let email = el.innerHTML;
+            //console.log(email);
+
+            // 이메일 @ 기준으로 자르기
+            let tempEmailArr = email.split('@');
+            //console.log(tempEmailArr);
+
+            // @ 앞부분 *로 변경
+            let tempId = tempEmailArr[0].substr(0, 3);
+            for (let i=0; i<tempEmailArr[0].length-3; i++) {
+                tempId += '*';
+            }
+            //console.log(tempId);
+
+            // 이메일 변경 result
+            let resultEmail = tempId + '@' + tempEmailArr[1];
+            el.innerHTML = resultEmail;
+        });
+
+        // 체크박스 하나만 선택되게
+        $('#emailForm input[name="checkBox"]').on('click', function(e) {
+            console.log(e.target.checked);
+            if(e.target.checked == true) {
+                $('#emailForm input[name="checkBox"]').each((idx ,cb) => {
+                    //console.log(cb);
+                    cb.checked = false;
+                })
+                e.target.checked = true;
+            } else{
+                e.target.checked = false;
+            }
+        });
+
+        // 요청사항 메일로 전송
+        $('#emailButton').on('click', function(e) {
+            e.preventDefault();
+
+            // 입력되지 않을 시 알람창
+            if(!($('#emailForm input[name="checkBox"]').is(':checked'))) {
+                Swal.fire({
+                    title: "문의 종류",
+                    text: "문의 종류를 선택해주세요 :)",
+                    icon: "warning",
+                    confirmButtonColor: "#0d0d0d",
+                    confirmButtonText: "확인",
+                    iconHtml: '<img src="member/mypage/images/mbti/INFP.png" style="width: 7rem; height: 7rem;">',
+                    customClass: {
+                        icon: 'no-border'
+                    }
+                });
+                return;
+            }
+            else if($('.work-request--information input').val().length == 0) {
+                Swal.fire({
+                    title: "문의 내용",
+                    text: "이름, 이메일, 내용을 모두 입력해주세요 :)",
+                    icon: "warning",
+                    confirmButtonColor: "#0d0d0d",
+                    confirmButtonText: "확인",
+                    iconHtml: '<img src="member/mypage/images/mbti/ISFJ.png" style="width: 7rem; height: 7rem;">',
+                    customClass: {
+                        icon: 'no-border'
+                    }
+                });
+                return;
+            }
+
+            // Ajax로 메일 보내기
+            let formData = $('#emailForm').serializeArray();
+            console.log(formData);
+
+            let objData = {};
+            $.each(formData, (idx, obj) => {
+                objData[obj.name] = obj.value;
+            });
+
+            $.ajax({
+                url: '/contactEmail',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(objData),
+            })
+            .done(function(result) {
+                console.log(result);
+                if (result) {
+                    console.log("contact success");
+                    Swal.fire({
+                        title: "문의 전송",
+                        text: "문의 전송이 완료되었습니다 :)",
+                        icon: "success",
+                        confirmButtonColor: "#0d0d0d",
+                        confirmButtonText: "확인",
+                        iconHtml: '<img src="member/mypage/images/mbti/ISFP.png" style="width: 7rem; height: 7rem;">',
+                        customClass: {
+                            icon: 'no-border'
+                        }
+                    }).then(function(){
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        title: "문의 오류",
+                        text: "문의 전송 중 오류 발생, 새로고침 진행합니다.",
+                        icon: "error",
+                    }).then(function(){
+                        location.reload();
+                    })
+                }
+            })
+            .fail(function(err) {
+                console.log(err);
+                Swal.fire({
+                    title: "문의 오류",
+                    text: "문의 전송 중 오류 발생, 새로고침 진행합니다.",
+                    icon: "error",
+                }).then(function(){
+                    location.reload();
+                })
+            })
+        });
+    </script>
+</th:block>
+</body>
+
+</html>

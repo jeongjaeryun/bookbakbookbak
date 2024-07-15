@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/home/images/logo-header.png"/>
+    <link rel="apple-touch-icon" href="/home/images/logo-header.png"/>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <script src="https://use.fontawesome.com/releases/v6.5.1/js/all.js"></script>
+    <title>티격태격</title>
+    <style type="text/css">
+        /* .header-user {
+            color: #fff !important;
+            display: inline-block;
+            overflow: hidden;
+            margin-left: 1.2rem;
+            height: 27px;
+        }
+        #icon-user {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        #icon-logout {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        } */
+    </style>
+</head>
+<body>
+
+<div class="l-wrapper">
+    <!--/* 헤더 start */-->
+    <header th:replace="fragments/header.html :: headerFragment"></header>
+    <!--/* 헤더 end */-->
+</div>
+
+<!--/* 메인 컨텐츠 영역 start */-->
+<div id="contents" layout:fragment="mainContent"></div>
+<!--/* 메인 컨텐츠 영역 end */-->
+
+<!--/* 푸터 영역 start */-->
+<!-- <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div th:replace="fragments/footer.html :: footerFragment"></div>
+            </div>
+        </div>
+    </div>
+</footer> -->
+<!--/* 사이드 메뉴 start */-->
+<!-- <div th:replace="fragments/side.html :: sideFragment"></div> -->
+<!--/* 사이드 메뉴 end */-->
+</body>
+</html>
