@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class Challenge {
+public class Challenge { //챌린지
     private int challengeId;
     private String memberId;
     private String challengePeriod;
