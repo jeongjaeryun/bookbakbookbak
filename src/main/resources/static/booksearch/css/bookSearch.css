@@ -1,0 +1,99 @@
+.allFinder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 90vh;
+   /* background-color: #f7f7f7;
+     배경색 변경 */
+}
+
+.searchHeader {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.searchBody {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.searchBody input[type="text"],
+.searchBody button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border-width: thin;
+}
+
+.searchBody input[type="text"]:focus {
+    outline: none;
+    /* 검색 창 클릭 시 테두리 효과 제거 */
+}
+#searchInput {
+    width: 600px;
+}
+#searchResults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    /* BookFinder 크기 조정 */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.book-item {
+    width: 20%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.book-item img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #f2f2f2;
+    /* 팝업 창 색상 변경 */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+.quote {
+    display: none;
+    margin-top: 20px;
+    font-style: italic;
+    color: gray;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

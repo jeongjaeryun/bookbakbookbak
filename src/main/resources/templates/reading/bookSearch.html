@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 검색</title>
+    <link rel="stylesheet" href="/booksearch/css/bookSearch.css">
+<!--    <link rel="stylesheet" href="/user/css/textChatGame.css">-->
+    <link
+            href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+            rel="stylesheet">
+</head>
+<body>
+<th:block layout:fragment="mainContent">
+    <div class="allFinder" style="text-align:center;">
+        <div class="searchHeader">
+            <h1><a href="/" style="color: #333; font-size:200%;">원하시는 책을 검색하세요</a></h1> <!-- BookFinder 링크 -->
+        </div>
+
+        <div class="searchBody">
+            <input type="text" id="searchInput" placeholder="책 제목을 입력하세요" onkeydown="handleSearch(event)">
+            <button th:onclick="searchBooks()">search</button> <!-- 검색 버튼 -->
+        </div>
+
+        <div id="searchResults" style="display: none;">
+        </div>
+
+        <div id="popupContainer" style="display: none;">
+            <div id="popupContent" class="popup"></div>
+        </div>
+
+        <div id="pageContainer" class="pagination" style="display: none;">
+            <button id="prevButton" th:onclick="showPrevPage()" disabled>prev</button>
+            <button id="nextButton" th:onclick="showNextPage()" disabled>next</button>
+        </div>
+
+<!--        <div class="quote" id="quote">-->
+<!--            <p>"Books are a uniquely portable magic."</p> &lt;!&ndash; 인용문 &ndash;&gt;-->
+<!--            <p style="font-size: 80%; margin-left: 16%;">- Stephen King -</p>-->
+<!--        </div>-->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+            integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script th:inline="javascript">
+
+    </script>
+    <script th:src="@{/booksearch/js/bookSearch.js}"></script>
+<!--    <script th:src="@{/user/js/game.js}"></script>-->
+<!--    <script th:src="@{/user/js/chat.js}"></script>-->
+</th:block>
+</body>
+</html>
