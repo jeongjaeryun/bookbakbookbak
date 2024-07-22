@@ -12,4 +12,10 @@ public class ReadingController {
     public String calendar(){
         return "calendar/calendar.html";
     }
+
+    @GetMapping("/bookSearch")
+    public String bookSearch(){
+        return "reading/bookSearch.html";
+    }
+
 }
